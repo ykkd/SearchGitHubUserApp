@@ -23,15 +23,19 @@ final class UserListViewStream: UnioStream<UserListViewStream>, UserListViewStre
     }
     
     struct State:StateType {
-
+        let userListData = PublishRelay<[User]>()
+        let userTotalCount = PublishRelay<String?>()
+        let errorMessage = PublishRelay<String?>()
     }
     
     struct Input: InputType {
-
+        let searchKeyword = PublishRelay<String?>()
     }
     
     struct Output: OutputType {
-
+        let userListData: PublishRelay<[User]>
+        let userTotalCount: PublishRelay<String?>
+        let errorMessage: PublishRelay<String?>
     }
     
     struct Extra: ExtraType {
@@ -41,6 +45,36 @@ final class UserListViewStream: UnioStream<UserListViewStream>, UserListViewStre
     static func bind(from dependency: Dependency<UserListViewStream.Input, State, UserListViewStream.Extra>, disposeBag: DisposeBag) -> UserListViewStream.Output {
         let usecase = dependency.extra.userListUseCase
         let state = dependency.state
-        return Output()
+        
+        dependency.inputObservable(for: \.searchKeyword)
+            .subscribe(onNext: { (response) in
+
+            if response != nil {
+                fetchDataForOutput(usecase: dependency.extra.userListUseCase, state: dependency.state, disposeBag: disposeBag, key: response!)
+            }
+
+            }).disposed(by: disposeBag)
+        
+        return Output(userListData: state.userListData, userTotalCount: state.userTotalCount, errorMessage: state.errorMessage)
     }
+}
+
+extension UserListViewStream {
+    static func fetchDataForOutput(usecase: UserListUseCase, state: UserListViewStream.State, disposeBag: DisposeBag, key: String) {
+        
+        usecase.fetchData(searchKeyword: key)
+            .subscribe(onSuccess: { (response) in
+            if response.items != nil {
+                state.userListData.accept(response.items!)
+            }
+        
+            let totalCountStr = String(response.totalCount)
+            state.userTotalCount.accept(totalCountStr)
+                
+        }) { error in
+            state.errorMessage.accept(error.localizedDescription)
+            }
+        .disposed(by: disposeBag)
+    }
+    
 }

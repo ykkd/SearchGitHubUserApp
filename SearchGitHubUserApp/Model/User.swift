@@ -23,7 +23,7 @@ struct SearchResponse: Decodable {
         self.items = try? container.decode([User].self, forKey: .items)
     }
     
-    init(count:Int, items: [User]?){
+    init(count: Int, items: [User]?) {
         self.totalCount = count
         self.items = items
     }
@@ -31,7 +31,7 @@ struct SearchResponse: Decodable {
     static func parse(_ data: Data) -> SearchResponse {
         do {
             return try JSONDecoder().decode(SearchResponse.self, from: data)
-        }catch {
+        } catch {
             return SearchResponse(count: 0, items: nil)
         }
     }
