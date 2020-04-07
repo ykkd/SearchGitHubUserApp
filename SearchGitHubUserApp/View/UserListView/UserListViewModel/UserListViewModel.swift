@@ -50,7 +50,7 @@ final class UserListViewStream: UnioStream<UserListViewStream>, UserListViewStre
             .subscribe(onNext: { (response) in
 
             if response != nil {
-                fetchDataForOutput(usecase: dependency.extra.userListUseCase, state: dependency.state, disposeBag: disposeBag, key: response!)
+                fetchDataForOutput(usecase: dependency.extra.userListUseCase, state: dependency.state, disposeBag: disposeBag, key: response!, page: 1)
             }
 
             }).disposed(by: disposeBag)
@@ -60,9 +60,9 @@ final class UserListViewStream: UnioStream<UserListViewStream>, UserListViewStre
 }
 
 extension UserListViewStream {
-    static func fetchDataForOutput(usecase: UserListUseCase, state: UserListViewStream.State, disposeBag: DisposeBag, key: String) {
+    static func fetchDataForOutput(usecase: UserListUseCase, state: UserListViewStream.State, disposeBag: DisposeBag, key: String, page: Int) {
         
-        usecase.fetchData(searchKeyword: key)
+        usecase.fetchData(searchKeyword: key, pageNum: page)
             .subscribe(onSuccess: { (response) in
             if response.items != nil {
                 state.userListData.accept(response.items!)

@@ -13,6 +13,7 @@ target 'SearchGitHubUserApp' do
   pod 'SVProgressHUD', '~> 2.2.5'
   pod 'R.swift', '~> 5.1.0'
   pod 'SwiftLint'
+  pod 'SDWebImage'
 
   target 'SearchGitHubUserAppTests' do
     inherit! :search_paths

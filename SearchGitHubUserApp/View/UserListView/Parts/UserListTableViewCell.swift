@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class UserListTableViewCell: UITableViewCell {
 
@@ -21,9 +22,7 @@ extension UserListTableViewCell {
         self.userNameLabel.text = data.loginID
         self.userTypeLabel.text = data.userType
         if data.avatarUrl != nil {
-            UIImage.imageForHeadline(url: data.avatarUrl!, completion: { (image) in
-                    self.avatarImageView.image = image
-                })
+            self.avatarImageView.sd_setImage(with: URL(string: data.avatarUrl!), placeholderImage: R.image.placeholder())
         }
         self.userUrl = data.url
     }

@@ -38,8 +38,6 @@
 		C1502213243CA1D800C3F01E /* UserListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1502211243CA1D800C3F01E /* UserListViewController.storyboard */; };
 		C1502215243CA1F100C3F01E /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1502214243CA1F100C3F01E /* UserListViewController.swift */; };
 		C1502216243CA1F100C3F01E /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1502214243CA1F100C3F01E /* UserListViewController.swift */; };
-		C1502218243CA5E200C3F01E /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1502217243CA5E200C3F01E /* UIImage+Extension.swift */; };
-		C1502219243CA5E200C3F01E /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1502217243CA5E200C3F01E /* UIImage+Extension.swift */; };
 		C150221B243CA85400C3F01E /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C150221A243CA85400C3F01E /* AppConst.swift */; };
 		C150221C243CA85400C3F01E /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C150221A243CA85400C3F01E /* AppConst.swift */; };
 		FDEC861F1C3CB6A9E0AC4EF5 /* Pods_SearchGitHubUserApp_SearchGitHubUserAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBAC67897F5D858E84FB6F9D /* Pods_SearchGitHubUserApp_SearchGitHubUserAppUITests.framework */; };
@@ -91,7 +89,6 @@
 		C150220C243CA1B400C3F01E /* UserListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListTableViewCell.xib; sourceTree = "<group>"; };
 		C1502211243CA1D800C3F01E /* UserListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserListViewController.storyboard; sourceTree = "<group>"; };
 		C1502214243CA1F100C3F01E /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
-		C1502217243CA5E200C3F01E /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		C150221A243CA85400C3F01E /* AppConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
 		C3EB74E99235975C98567283 /* Pods_SearchGitHubUserApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchGitHubUserApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBAC67897F5D858E84FB6F9D /* Pods_SearchGitHubUserApp_SearchGitHubUserAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchGitHubUserApp_SearchGitHubUserAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,7 +199,6 @@
 		C15021E8243C8F9300C3F01E /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				C1502217243CA5E200C3F01E /* UIImage+Extension.swift */,
 				C150221A243CA85400C3F01E /* AppConst.swift */,
 			);
 			path = Util;
@@ -581,7 +577,6 @@
 			files = (
 				C150220D243CA1B400C3F01E /* UserListTableViewCell.swift in Sources */,
 				C1502215243CA1F100C3F01E /* UserListViewController.swift in Sources */,
-				C1502218243CA5E200C3F01E /* UIImage+Extension.swift in Sources */,
 				C15021B0243C8D6C00C3F01E /* AppDelegate.swift in Sources */,
 				C15021F5243C90F600C3F01E /* APITypes.swift in Sources */,
 				C15021EE243C8FC400C3F01E /* APIDataStore.swift in Sources */,
@@ -606,7 +601,6 @@
 				C150220E243CA1B400C3F01E /* UserListTableViewCell.swift in Sources */,
 				C1502216243CA1F100C3F01E /* UserListViewController.swift in Sources */,
 				C15021FD243C92A600C3F01E /* UserListUseCase.swift in Sources */,
-				C1502219243CA5E200C3F01E /* UIImage+Extension.swift in Sources */,
 				C15021C7243C8D6D00C3F01E /* SearchGitHubUserAppTests.swift in Sources */,
 				C1502200243C940D00C3F01E /* User.swift in Sources */,
 				C150221C243CA85400C3F01E /* AppConst.swift in Sources */,
