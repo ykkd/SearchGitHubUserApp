@@ -38,7 +38,7 @@
                                 <state key="normal" image="right"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gXs-M8-IKo">
-                                <rect key="frame" x="320" y="700" width="64" height="64"/>
+                                <rect key="frame" x="320" y="300" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="search"/>
                             </button>

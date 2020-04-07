@@ -35,14 +35,6 @@ class UserListViewController: UIViewController {
         setTableView()
         self.bind()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(true)
-//
-//        let notificationCenter = NotificationCenter.default
-//        notificationCenter.addObserver(self, selector: Selector(("handleKeyboardWillShowNotification:")), name: UIResponder.keyboardWillShowNotification, object: nil)
-//    }
-    
 }
 
 extension UserListViewController {
@@ -79,6 +71,19 @@ extension UserListViewController {
             .subscribe(onNext: { [weak self] in
                 let nextPageNum = -1 + (self?.currentPageNum ?? 1)
                 self?.viewModel.input.accept(for: \.pageNum).onNext(nextPageNum)
+            }).disposed(by: disposeBag)
+
+        searchButton.rx.tap
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                
+                if self?.searchBar.showsCancelButton == true {
+                    self?.searchBar.setShowsCancelButton(false, animated: true)
+                    self?.searchBar.resignFirstResponder()
+                } else {
+                    self?.searchBar.becomeFirstResponder()
+                }
+                
             }).disposed(by: disposeBag)
     }
     
