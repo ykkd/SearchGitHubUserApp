@@ -26,7 +26,6 @@ class UserListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setSearchBar()
         setTableView()
         self.bind()
@@ -49,6 +48,13 @@ extension UserListViewController {
                 SVProgressHUD.dismiss()
             }).disposed(by: disposeBag)
         
+        searchBar.rx.textDidBeginEditing
+            .subscribe(onNext: { [weak self] in
+                self?.data = []
+                self?.infoLabel.rx.text.onNext("入力中...")
+                self?.tableView.reloadData()
+            }).disposed(by: disposeBag)
+        
         tableView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
                 SVProgressHUD.show()
@@ -68,6 +74,20 @@ extension UserListViewController {
                self?.data = outputData
                self?.tableView.reloadData()
            }).disposed(by: disposeBag)
+        
+        self.viewModel.output.userTotalCount
+            .bind { totalCountString in
+                let displayText = totalCountString ?? "0"
+                self.infoLabel.text = displayText + " 件"
+            }.disposed(by: disposeBag)
+        
+        self.viewModel.output.errorMessage
+            .bind(to: Binder(self) { me, message in
+                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                me.present(alert, animated: true, completion: nil)
+                self.showEmptyView()
+            }).disposed(by: disposeBag)
     }
     
 }
@@ -75,7 +95,13 @@ extension UserListViewController {
 extension UserListViewController {
     private func setSearchBar() {
         navigationItem.titleView = searchBar
-        searchBar.placeholder = "Input user name"
+        searchBar.placeholder = "検索してみてください"
+    }
+}
+
+extension UserListViewController {
+    private func showEmptyView() {
+        self.infoLabel.text = ""
     }
 }
 
@@ -85,6 +111,7 @@ extension UserListViewController: UITableViewDataSource, UITableViewDelegate {
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .none
         
         rowHeight = screenSize.height / 8
         
