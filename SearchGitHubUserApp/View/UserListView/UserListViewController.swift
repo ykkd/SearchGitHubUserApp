@@ -31,8 +31,7 @@ class UserListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setSearchBar()
-        setTableView()
+        setInitialState()
         self.bind()
     }
 }
@@ -64,6 +63,7 @@ extension UserListViewController {
             .subscribe(onNext: { [weak self] in
                 let nextPageNum = 1 + (self?.currentPageNum ?? 1)
                 self?.viewModel.input.accept(for: \.pageNum).onNext(nextPageNum)
+                self?.scrollToTop()
             }).disposed(by: disposeBag)
         
         leftButton.rx.tap
@@ -71,6 +71,7 @@ extension UserListViewController {
             .subscribe(onNext: { [weak self] in
                 let nextPageNum = -1 + (self?.currentPageNum ?? 1)
                 self?.viewModel.input.accept(for: \.pageNum).onNext(nextPageNum)
+                self?.scrollToTop()
             }).disposed(by: disposeBag)
 
         searchButton.rx.tap
@@ -78,10 +79,14 @@ extension UserListViewController {
             .subscribe(onNext: { [weak self] in
                 
                 if self?.searchBar.showsCancelButton == true {
+                    
                     self?.searchBar.setShowsCancelButton(false, animated: true)
                     self?.searchBar.resignFirstResponder()
+                    self?.searchButton.imageView?.image = R.image.search()
+                    
                 } else {
                     self?.searchBar.becomeFirstResponder()
+                    self?.searchButton.imageView?.image = R.image.cancel()
                 }
                 
             }).disposed(by: disposeBag)
@@ -98,18 +103,22 @@ extension UserListViewController {
                 self?.searchBar.resignFirstResponder()
                 self?.searchBar.setShowsCancelButton(false, animated: true)
                 
+                self?.searchButton.imageView?.image = R.image.search()
+                
                 SVProgressHUD.dismiss()
             }).disposed(by: disposeBag)
         
         searchBar.rx.textDidBeginEditing
             .subscribe(onNext: { [weak self] in
                 self?.searchBar.setShowsCancelButton(true, animated: true)
+                self?.searchButton.imageView?.image = R.image.cancel()
             }).disposed(by: disposeBag)
         
         searchBar.rx.cancelButtonClicked
             .subscribe(onNext: { [weak self] in
                 self?.searchBar.resignFirstResponder()
                 self?.searchBar.setShowsCancelButton(false, animated: true)
+                self?.searchButton.imageView?.image = R.image.search()
             }).disposed(by: disposeBag)
     }
     
@@ -118,8 +127,10 @@ extension UserListViewController {
             .bind(onNext: { [weak self] outputData in
                 
                 SVProgressHUD.show()
+                
                 self?.data = outputData
                 self?.tableView.reloadData()
+                
                 SVProgressHUD.dismiss()
                 
            }).disposed(by: disposeBag)
@@ -167,19 +178,25 @@ extension UserListViewController {
 }
 
 extension UserListViewController {
+    
+    private func setInitialState() {
+        
+        rightButton.isHidden = true
+        leftButton.isHidden = true
+        
+        setSearchBar()
+        setTableView()
+    }
+    
     private func setSearchBar() {
         navigationItem.titleView = searchBar
         searchBar.placeholder = "検索してみてください"
     }
-}
-
-extension UserListViewController {
+    
     private func showEmptyView() {
         self.infoLabel.text = ""
     }
-}
-
-extension UserListViewController: UITableViewDataSource, UITableViewDelegate {
+    
     private func setTableView() {
         tableView.register(UINib(nibName: "UserListTableViewCell", bundle: nil), forCellReuseIdentifier: "UserListTableViewCell")
         
@@ -190,6 +207,9 @@ extension UserListViewController: UITableViewDataSource, UITableViewDelegate {
         rowHeight = screenSize.height / 8
         
     }
+}
+
+extension UserListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
@@ -212,5 +232,10 @@ extension UserListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    private func scrollToTop() {
+        let topCellIndexPath: IndexPath = IndexPath(row: 0, section: 0)
+        tableView.scrollToRow(at: topCellIndexPath, at: .top, animated: false)
     }
 }
