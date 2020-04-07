@@ -20,6 +20,11 @@ class UserListViewController: UIViewController {
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     
+    @IBOutlet weak var leftButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var rightButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var searchButtonBottomConstraint: NSLayoutConstraint!
+    
+    
     private let viewModel: UserListViewStream = UserListViewStream()
     private let disposeBag = DisposeBag()
     
@@ -31,6 +36,7 @@ class UserListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUserListVCConstraint()
         setInitialState()
         self.bind()
     }
@@ -90,6 +96,25 @@ extension UserListViewController {
                 }
                 
             }).disposed(by: disposeBag)
+        
+        keyboardHeight()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (keyboardHeight) in
+                // adjust other views with keyboardHeight
+                print(keyboardHeight)
+                
+                if keyboardHeight != 0 {
+                    self?.leftButtonBottomConstraint.constant = keyboardHeight + AppConst.keyboardMargin
+                    self?.rightButtonBottomConstraint.constant = keyboardHeight + AppConst.keyboardMargin
+                    self?.searchButtonBottomConstraint.constant = keyboardHeight + AppConst.keyboardMargin
+                } else {
+                    self?.leftButtonBottomConstraint.constant = AppConst.defaultMargin
+                    self?.rightButtonBottomConstraint.constant = AppConst.defaultMargin
+                    self?.searchButtonBottomConstraint.constant = AppConst.defaultMargin
+                }
+
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindInputForSearchBar() {

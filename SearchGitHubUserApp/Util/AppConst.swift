@@ -12,4 +12,6 @@ let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: 
 
 enum AppConst {
     static let perPageNum: Int = 10
+    static let defaultMargin: CGFloat = 96
+    static let keyboardMargin: CGFloat = 16
 }
