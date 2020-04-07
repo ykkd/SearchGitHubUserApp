@@ -48,7 +48,6 @@ extension UserListViewController {
         self.baseView.widthAnchor.constraint(equalToConstant: screenSize.width * 0.6).isActive = true
         self.baseView.heightAnchor.constraint(equalToConstant: screenSize.width * 0.6).isActive = true
         
-        animateLottie(baseView: self.baseView, animationView: self.animationView, animation: self.animation!, playSpeed: 1.0)
 //        //leftButtonのcoonstraint設定
 //        self.leftButton.translatesAutoresizingMaskIntoConstraints = false
 //        self.leftButton.heightAnchor.constraint(equalToConstant: screenSize.height / 12).isActive = true

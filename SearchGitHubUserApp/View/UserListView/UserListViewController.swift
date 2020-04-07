@@ -50,6 +50,11 @@ class UserListViewController: UIViewController {
         
         SVProgressHUD.dismiss()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        animateLottie(baseView: self.baseView, animationView: self.animationView, animation: self.animation!, playSpeed: 1.0)
+    }
 }
 
 extension UserListViewController {
@@ -76,6 +81,7 @@ extension UserListViewController {
         rightButton.rx.tap
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
+                SVProgressHUD.show()
                 let nextPageNum = 1 + (self?.currentPageNum ?? 1)
                 self?.viewModel.input.accept(for: \.pageNum).onNext(nextPageNum)
                 self?.scrollToTop()
@@ -84,6 +90,7 @@ extension UserListViewController {
         leftButton.rx.tap
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
+                SVProgressHUD.show()
                 let nextPageNum = -1 + (self?.currentPageNum ?? 1)
                 self?.viewModel.input.accept(for: \.pageNum).onNext(nextPageNum)
                 self?.scrollToTop()
@@ -141,7 +148,7 @@ extension UserListViewController {
                 
                 self?.searchButton.imageView?.image = R.image.search()
                 
-                SVProgressHUD.dismiss()
+//                SVProgressHUD.dismiss()
             }).disposed(by: disposeBag)
         
         searchBar.rx.textDidBeginEditing
@@ -206,6 +213,9 @@ extension UserListViewController {
         
         self.viewModel.output.errorMessage
             .bind(to: Binder(self) { me, message in
+                
+                SVProgressHUD.dismiss()
+                
                 let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
                 me.present(alert, animated: true, completion: nil)
