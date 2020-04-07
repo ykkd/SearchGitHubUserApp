@@ -13,6 +13,7 @@ class UserListViewController: UIViewController {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    private let viewModel: UserListViewStream = UserListViewStream()
     let searchBar = UISearchBar(frame: .zero)
     let data: [User]? = []
     var rowHeight: CGFloat = 136
@@ -60,5 +61,3 @@ extension UserListViewController: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
 }
-
-
