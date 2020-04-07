@@ -35,6 +35,14 @@ class UserListViewController: UIViewController {
         setTableView()
         self.bind()
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//
+//        let notificationCenter = NotificationCenter.default
+//        notificationCenter.addObserver(self, selector: Selector(("handleKeyboardWillShowNotification:")), name: UIResponder.keyboardWillShowNotification, object: nil)
+//    }
+    
 }
 
 extension UserListViewController {
@@ -44,22 +52,8 @@ extension UserListViewController {
     }
     
     private func bindInput() {
-        searchBar.rx.searchButtonClicked
-            .subscribe(onNext: { [weak self] in
-                SVProgressHUD.show()
-                self?.viewModel.input.accept(for: \.searchKeyword).onNext(self?.searchBar.text)
-                self?.viewModel.input.accept(for: \.pageNum).onNext(self?.currentPageNum)
-                
-                self?.searchBar.endEditing(true)
-                SVProgressHUD.dismiss()
-            }).disposed(by: disposeBag)
         
-        searchBar.rx.textDidBeginEditing
-            .subscribe(onNext: { [weak self] in
-                self?.data = []
-                self?.infoLabel.rx.text.onNext("入力中...")
-                self?.tableView.reloadData()
-            }).disposed(by: disposeBag)
+        bindInputForSearchBar()
         
         tableView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
@@ -85,6 +79,32 @@ extension UserListViewController {
             .subscribe(onNext: { [weak self] in
                 let nextPageNum = -1 + (self?.currentPageNum ?? 1)
                 self?.viewModel.input.accept(for: \.pageNum).onNext(nextPageNum)
+            }).disposed(by: disposeBag)
+    }
+    
+    private func bindInputForSearchBar() {
+        searchBar.rx.searchButtonClicked
+            .subscribe(onNext: { [weak self] in
+                SVProgressHUD.show()
+                
+                self?.viewModel.input.accept(for: \.searchKeyword).onNext(self?.searchBar.text)
+                self?.viewModel.input.accept(for: \.pageNum).onNext(self?.currentPageNum)
+                
+                self?.searchBar.resignFirstResponder()
+                self?.searchBar.setShowsCancelButton(false, animated: true)
+                
+                SVProgressHUD.dismiss()
+            }).disposed(by: disposeBag)
+        
+        searchBar.rx.textDidBeginEditing
+            .subscribe(onNext: { [weak self] in
+                self?.searchBar.setShowsCancelButton(true, animated: true)
+            }).disposed(by: disposeBag)
+        
+        searchBar.rx.cancelButtonClicked
+            .subscribe(onNext: { [weak self] in
+                self?.searchBar.resignFirstResponder()
+                self?.searchBar.setShowsCancelButton(false, animated: true)
             }).disposed(by: disposeBag)
     }
     
@@ -137,7 +157,6 @@ extension UserListViewController {
                 guard let page = page else { return }
                 self?.currentPageNum = page
             }).disposed(by: disposeBag)
-        
     }
     
 }
