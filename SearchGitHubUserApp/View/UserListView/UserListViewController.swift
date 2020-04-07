@@ -182,8 +182,12 @@ extension UserListViewController {
                 
                 if totalCount == 0 {
                     self.infoLabel.text = "検索結果は0件です"
+                    self.leftButton.isHidden = true
+                    self.rightButton.isHidden = true
                 } else {
                     self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + "ページ目"
+                    self.leftButton.isHidden = false
+                    self.rightButton.isHidden = false
                 }
                 
                 if maxPageNum == self.currentPageNum {
