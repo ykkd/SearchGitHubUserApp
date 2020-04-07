@@ -82,7 +82,9 @@ extension UserListViewStream {
                     if response.left?.items != nil {
                         state.userListData.accept((response.left?.items)!)
                     }
+                    
                     state.userTotalCount.accept(response.left?.totalCount)
+                    
                 }
                 
                 if response.right != nil {

@@ -40,6 +40,8 @@ extension UserListTableViewCell {
         self.avatarImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8).isActive = true
         self.avatarImageView.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8).isActive = true
         
+        //avatarImageViewの外観調整
+        self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.size.height * 0.1
         //userNameLabelのconstraint設定
         self.userNameLabel.translatesAutoresizingMaskIntoConstraints = false
         self.userNameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: rowHeight * -0.1).isActive = true
