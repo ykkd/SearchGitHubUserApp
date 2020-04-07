@@ -11,7 +11,7 @@ import UIKit
 let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
 
 enum AppConst {
-    static let perPageNum: Int = 10
+    static let perPageNum: Int = 30
     static let defaultMargin: CGFloat = 96
     static let keyboardMargin: CGFloat = 16
     static let baseColor: UIColor = UIColor(hex: "202225")

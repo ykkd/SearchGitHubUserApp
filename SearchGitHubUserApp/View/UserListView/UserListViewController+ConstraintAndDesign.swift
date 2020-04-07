@@ -53,22 +53,22 @@ extension UserListViewController {
 //        self.leftButton.translatesAutoresizingMaskIntoConstraints = false
 //        self.leftButton.heightAnchor.constraint(equalToConstant: screenSize.height / 12).isActive = true
 //        self.leftButton.widthAnchor.constraint(equalToConstant: screenSize.height / 12).isActive = true
-//        self.leftButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: self.leftButton.frame.size.width * -0.6).isActive = true
-//        self.leftButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: self.leftButton.frame.size.width * -0.5).isActive = true
+//        self.leftButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: self.leftButton.bounds.size.width * -0.6).isActive = true
+//        self.leftButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: self.leftButton.bounds.size.width * -0.5).isActive = true
 //
 //        //rightButtonのcoonstraint設定
 //        self.rightButton.translatesAutoresizingMaskIntoConstraints = false
 //        self.rightButton.heightAnchor.constraint(equalToConstant: screenSize.height / 12).isActive = true
 //        self.rightButton.widthAnchor.constraint(equalToConstant: screenSize.height / 12).isActive = true
-//        self.rightButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: self.rightButton.frame.size.width * 0.6).isActive = true
-//        self.rightButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: self.rightButton.frame.size.width * -0.5).isActive = true
+//        self.rightButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: self.rightButton.bounds.size.width * 0.6).isActive = true
+//        self.rightButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: self.rightButton.bounds.size.width * -0.5).isActive = true
 //
 //        //searchButtonのcoonstraint設定
 //        self.searchButton.translatesAutoresizingMaskIntoConstraints = false
 //        self.searchButton.heightAnchor.constraint(equalToConstant: screenSize.height / 12).isActive = true
 //        self.searchButton.widthAnchor.constraint(equalToConstant: screenSize.height / 12).isActive = true
-//        self.searchButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: self.searchButton.frame.size.width * 2.2).isActive = true
-//        self.searchButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: self.rightButton.frame.size.width * -0.5).isActive = true
+//        self.searchButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: self.searchButton.bounds.size.width * 2.2).isActive = true
+//        self.searchButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: self.rightButton.bounds.size.width * -0.5).isActive = true
     }
 }
 
@@ -78,8 +78,8 @@ extension UserListViewController {
     func animateLottie(baseView: UIView, animationView:AnimationView, animation:Animation, playSpeed:Float){
         if animationView.isAnimationPlaying == false {
             //bgAnimation
-            animationView.frame = CGRect(x:0,y:0,width:
-                baseView.frame.width,height:baseView.frame.height)
+            animationView.bounds = CGRect(x:0,y:0,width:
+                baseView.bounds.width,height:baseView.bounds.height)
             animationView.animation = animation
             animationView.contentMode = .scaleAspectFill
 
