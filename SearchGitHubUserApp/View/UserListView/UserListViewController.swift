@@ -41,9 +41,14 @@ class UserListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SVProgressHUD.show()
+        
         setUserListVCConstraintAndDesign()
         setInitialState()
         self.bind()
+        
+        SVProgressHUD.dismiss()
     }
 }
 
