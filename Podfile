@@ -14,6 +14,7 @@ target 'SearchGitHubUserApp' do
   pod 'R.swift', '~> 5.1.0'
   pod 'SwiftLint'
   pod 'SDWebImage'
+  pod 'lottie-ios'
 
   target 'SearchGitHubUserAppTests' do
     inherit! :search_paths

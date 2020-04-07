@@ -20,7 +20,7 @@ class UserListTableViewCell: UITableViewCell {
 extension UserListTableViewCell {
     func configure(data: User, rowHeight: CGFloat) {
         
-        setConstraint(rowHeight: rowHeight)
+        setConstraintAndDesign(rowHeight: rowHeight)
         
         self.userNameLabel.text = data.loginID
         self.userTypeLabel.text = data.userType
@@ -32,7 +32,12 @@ extension UserListTableViewCell {
 }
 
 extension UserListTableViewCell {
-    func setConstraint(rowHeight: CGFloat) {
+    func setConstraintAndDesign(rowHeight: CGFloat) {
+        
+        self.backgroundColor = .clear
+        self.userNameLabel.textColor = .white
+        self.userTypeLabel.textColor = .white
+        
         //avatarImageViewのconstraint設定
         self.avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         self.avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: rowHeight * 0.1).isActive = true

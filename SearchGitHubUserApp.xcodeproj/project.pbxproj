@@ -12,7 +12,7 @@
 		C14BE9E1243CAE3000F9663C /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14BE9E0243CAE3000F9663C /* UserListViewModel.swift */; };
 		C14BE9E3243CE9DE00F9663C /* KeyBoardHeightObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14BE9E2243CE9DE00F9663C /* KeyBoardHeightObservable.swift */; };
 		C14BE9E5243CFE4C00F9663C /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14BE9E4243CFE4C00F9663C /* Either.swift */; };
-		C14BE9E7243D0A8300F9663C /* USerListViewController+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14BE9E6243D0A8300F9663C /* USerListViewController+Constraint.swift */; };
+		C14BE9E7243D0A8300F9663C /* UserListViewController+ConstraintAndDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14BE9E6243D0A8300F9663C /* UserListViewController+ConstraintAndDesign.swift */; };
 		C15021B0243C8D6C00C3F01E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15021AF243C8D6C00C3F01E /* AppDelegate.swift */; };
 		C15021B9243C8D6D00C3F01E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C15021B8243C8D6D00C3F01E /* Assets.xcassets */; };
 		C15021BC243C8D6D00C3F01E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C15021BA243C8D6D00C3F01E /* LaunchScreen.storyboard */; };
@@ -45,6 +45,8 @@
 		C150221C243CA85400C3F01E /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C150221A243CA85400C3F01E /* AppConst.swift */; };
 		C1D39B4A243D20450080E0E2 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D39B49243D20450080E0E2 /* UserDetailViewController.swift */; };
 		C1D39B4B243D20450080E0E2 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D39B49243D20450080E0E2 /* UserDetailViewController.swift */; };
+		C1D39B4D243D2EB80080E0E2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D39B4C243D2EB80080E0E2 /* UIColorExtension.swift */; };
+		C1D39B52243D32140080E0E2 /* octocat.json in Resources */ = {isa = PBXBuildFile; fileRef = C1D39B51243D32140080E0E2 /* octocat.json */; };
 		FDEC861F1C3CB6A9E0AC4EF5 /* Pods_SearchGitHubUserApp_SearchGitHubUserAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBAC67897F5D858E84FB6F9D /* Pods_SearchGitHubUserApp_SearchGitHubUserAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,7 +75,7 @@
 		C14BE9E0243CAE3000F9663C /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		C14BE9E2243CE9DE00F9663C /* KeyBoardHeightObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardHeightObservable.swift; sourceTree = "<group>"; };
 		C14BE9E4243CFE4C00F9663C /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
-		C14BE9E6243D0A8300F9663C /* USerListViewController+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "USerListViewController+Constraint.swift"; sourceTree = "<group>"; };
+		C14BE9E6243D0A8300F9663C /* UserListViewController+ConstraintAndDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserListViewController+ConstraintAndDesign.swift"; sourceTree = "<group>"; };
 		C15021AC243C8D6C00C3F01E /* SearchGitHubUserApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchGitHubUserApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C15021AF243C8D6C00C3F01E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C15021B8243C8D6D00C3F01E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,6 +101,8 @@
 		C1502214243CA1F100C3F01E /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		C150221A243CA85400C3F01E /* AppConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
 		C1D39B49243D20450080E0E2 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		C1D39B4C243D2EB80080E0E2 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		C1D39B51243D32140080E0E2 /* octocat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = octocat.json; sourceTree = "<group>"; };
 		C3EB74E99235975C98567283 /* Pods_SearchGitHubUserApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchGitHubUserApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBAC67897F5D858E84FB6F9D /* Pods_SearchGitHubUserApp_SearchGitHubUserAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchGitHubUserApp_SearchGitHubUserAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3804E29F0A6F98B25520040 /* Pods_SearchGitHubUserAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchGitHubUserAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +183,7 @@
 				C15021EA243C8F9E00C3F01E /* Domain */,
 				C15021E9243C8F9A00C3F01E /* Model */,
 				C15021E8243C8F9300C3F01E /* Util */,
+				C1D39B4E243D31E10080E0E2 /* Resources */,
 				C15021B8243C8D6D00C3F01E /* Assets.xcassets */,
 				C15021BA243C8D6D00C3F01E /* LaunchScreen.storyboard */,
 				C15021BD243C8D6D00C3F01E /* Info.plist */,
@@ -211,6 +216,7 @@
 				C150221A243CA85400C3F01E /* AppConst.swift */,
 				C14BE9E2243CE9DE00F9663C /* KeyBoardHeightObservable.swift */,
 				C14BE9E4243CFE4C00F9663C /* Either.swift */,
+				C1D39B4C243D2EB80080E0E2 /* UIColorExtension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -273,7 +279,7 @@
 				C150220A243CA18B00C3F01E /* Parts */,
 				C1502211243CA1D800C3F01E /* UserListViewController.storyboard */,
 				C1502214243CA1F100C3F01E /* UserListViewController.swift */,
-				C14BE9E6243D0A8300F9663C /* USerListViewController+Constraint.swift */,
+				C14BE9E6243D0A8300F9663C /* UserListViewController+ConstraintAndDesign.swift */,
 				C1502220243CAADC00C3F01E /* UserListViewModel */,
 			);
 			path = UserListView;
@@ -302,6 +308,14 @@
 				C1D39B49243D20450080E0E2 /* UserDetailViewController.swift */,
 			);
 			path = UserDetailView;
+			sourceTree = "<group>";
+		};
+		C1D39B4E243D31E10080E0E2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C1D39B51243D32140080E0E2 /* octocat.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		D7C6CECEB816C0A0FAD37AF8 /* Frameworks */ = {
@@ -426,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C150220F243CA1B400C3F01E /* UserListTableViewCell.xib in Resources */,
+				C1D39B52243D32140080E0E2 /* octocat.json in Resources */,
 				C1502207243C9D2600C3F01E /* response.json in Resources */,
 				C1502212243CA1D800C3F01E /* UserListViewController.storyboard in Resources */,
 				C15021BC243C8D6D00C3F01E /* LaunchScreen.storyboard in Resources */,
@@ -596,6 +611,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1D39B4D243D2EB80080E0E2 /* UIColorExtension.swift in Sources */,
 				C14BE9E5243CFE4C00F9663C /* Either.swift in Sources */,
 				C150220D243CA1B400C3F01E /* UserListTableViewCell.swift in Sources */,
 				C1502215243CA1F100C3F01E /* UserListViewController.swift in Sources */,
@@ -610,7 +626,7 @@
 				C15021E7243C8EDB00C3F01E /* R.generated.swift in Sources */,
 				C14BE9E3243CE9DE00F9663C /* KeyBoardHeightObservable.swift in Sources */,
 				C15021F8243C919800C3F01E /* APITypes+UserList.swift in Sources */,
-				C14BE9E7243D0A8300F9663C /* USerListViewController+Constraint.swift in Sources */,
+				C14BE9E7243D0A8300F9663C /* UserListViewController+ConstraintAndDesign.swift in Sources */,
 				C15021F1243C8FEF00C3F01E /* JSONHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

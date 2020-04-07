@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import SVProgressHUD
 import SafariServices
+import Lottie
 
 class UserListViewController: UIViewController {
 
@@ -33,9 +34,14 @@ class UserListViewController: UIViewController {
     private var currentPageNum: Int = 1
     private var rowHeight: CGFloat = 136
     
+    //lottieAnimation
+    var baseView = UIView()
+    let animationView = AnimationView()
+    let animation = Animation.named(AppConst.octocatAnim)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUserListVCConstraint()
+        setUserListVCConstraintAndDesign()
         setInitialState()
         self.bind()
     }
@@ -81,7 +87,6 @@ extension UserListViewController {
         searchButton.rx.tap
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
-                
                 if self?.searchBar.showsCancelButton == true {
                     
                     self?.searchBar.setShowsCancelButton(false, animated: true)
@@ -118,6 +123,9 @@ extension UserListViewController {
     private func bindInputForSearchBar() {
         searchBar.rx.searchButtonClicked
             .subscribe(onNext: { [weak self] in
+                
+                self?.baseView.isHidden = true
+                
                 SVProgressHUD.show()
                 
                 self?.viewModel.input.accept(for: \.searchKeyword).onNext(self?.searchBar.text)
