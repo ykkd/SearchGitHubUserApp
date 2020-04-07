@@ -53,8 +53,4 @@ extension UserListViewController {
 //        self.searchButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: self.searchButton.frame.size.width * 2.2).isActive = true
 //        self.searchButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: self.rightButton.frame.size.width * -0.5).isActive = true
     }
-    
-    func changeButtonConstraint(keyHeight: CGFloat) {
-        self.searchButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: (self.rightButton.frame.size.width * -0.5) - keyHeight).isActive = true
-    }
 }

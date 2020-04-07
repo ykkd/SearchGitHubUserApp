@@ -24,7 +24,6 @@ class UserListViewController: UIViewController {
     @IBOutlet weak var rightButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var searchButtonBottomConstraint: NSLayoutConstraint!
     
-    
     private let viewModel: UserListViewStream = UserListViewStream()
     private let disposeBag = DisposeBag()
     
@@ -49,7 +48,6 @@ extension UserListViewController {
     }
     
     private func bindInput() {
-        
         bindInputForSearchBar()
         
         tableView.rx.itemSelected
