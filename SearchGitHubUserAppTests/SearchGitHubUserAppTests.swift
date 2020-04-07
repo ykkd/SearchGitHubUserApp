@@ -5,30 +5,33 @@
 //  Created by Yuki Kanda on 2020/04/07.
 //  Copyright © 2020 Yuki Kanda. All rights reserved.
 //
-
 import XCTest
 @testable import SearchGitHubUserApp
 
 class SearchGitHubUserAppTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func test_UserSearchResponse() {
+        guard let jsonObject = createDataObject() else {
+            XCTFail("Dataの生成に失敗")
+            return
         }
+            let decoder = JSONDecoder()
+        guard let task = try? decoder.decode(SearchResponse.self, from: jsonObject) else {
+            XCTFail("SearchResponseの生成に失敗")
+            return
+        }
+        XCTAssertEqual(task.totalCount, 7)
+        XCTAssertEqual(task.items?[0].loginID, "mojombo")
+        XCTAssertEqual(task.items?[0].avatarUrl, "https://avatars0.githubusercontent.com/u/1?v=4")
+        XCTAssertEqual(task.items?[0].url, "https://github.com/mojombo")
+        XCTAssertEqual(task.items?[0].userType, "User")
     }
 
+    private func createDataObject() -> Data? {
+        
+        let testBundle = Bundle(for: type(of: self))
+        let path = testBundle.url(forResource: "response", withExtension: "json")
+        let data = try! Data(contentsOf: path!, options: .uncached)
+        return data
+    }
 }
