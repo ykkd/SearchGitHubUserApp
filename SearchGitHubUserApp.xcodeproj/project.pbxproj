@@ -11,6 +11,7 @@
 		9295ED573C8DCA0DFA174BDA /* Pods_SearchGitHubUserApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EB74E99235975C98567283 /* Pods_SearchGitHubUserApp.framework */; };
 		C14BE9E1243CAE3000F9663C /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14BE9E0243CAE3000F9663C /* UserListViewModel.swift */; };
 		C14BE9E3243CE9DE00F9663C /* KeyBoardHeightObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14BE9E2243CE9DE00F9663C /* KeyBoardHeightObservable.swift */; };
+		C14BE9E5243CFE4C00F9663C /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14BE9E4243CFE4C00F9663C /* Either.swift */; };
 		C15021B0243C8D6C00C3F01E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15021AF243C8D6C00C3F01E /* AppDelegate.swift */; };
 		C15021B9243C8D6D00C3F01E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C15021B8243C8D6D00C3F01E /* Assets.xcassets */; };
 		C15021BC243C8D6D00C3F01E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C15021BA243C8D6D00C3F01E /* LaunchScreen.storyboard */; };
@@ -68,6 +69,7 @@
 		B8074ED84991D74017179030 /* Pods-SearchGitHubUserApp-SearchGitHubUserAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchGitHubUserApp-SearchGitHubUserAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-SearchGitHubUserApp-SearchGitHubUserAppUITests/Pods-SearchGitHubUserApp-SearchGitHubUserAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C14BE9E0243CAE3000F9663C /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		C14BE9E2243CE9DE00F9663C /* KeyBoardHeightObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardHeightObservable.swift; sourceTree = "<group>"; };
+		C14BE9E4243CFE4C00F9663C /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
 		C15021AC243C8D6C00C3F01E /* SearchGitHubUserApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchGitHubUserApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C15021AF243C8D6C00C3F01E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C15021B8243C8D6D00C3F01E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			children = (
 				C150221A243CA85400C3F01E /* AppConst.swift */,
 				C14BE9E2243CE9DE00F9663C /* KeyBoardHeightObservable.swift */,
+				C14BE9E4243CFE4C00F9663C /* Either.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C14BE9E5243CFE4C00F9663C /* Either.swift in Sources */,
 				C150220D243CA1B400C3F01E /* UserListTableViewCell.swift in Sources */,
 				C1502215243CA1F100C3F01E /* UserListViewController.swift in Sources */,
 				C15021B0243C8D6C00C3F01E /* AppDelegate.swift in Sources */,

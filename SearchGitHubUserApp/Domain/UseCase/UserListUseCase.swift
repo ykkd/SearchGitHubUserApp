@@ -10,11 +10,11 @@ import Foundation
 import RxSwift
 
 protocol UserListUseCase {
-    func fetchData(searchKeyword: String, pageNum: Int) -> Single<SearchResponse>
+    func fetchData(searchKeyword: String, pageNum: Int) -> Single<Either<SearchResponse,APILimit>>
 }
 
 final class UserListUseCaseImpl: UserListUseCase {
-    
+
     let apiDataStore: APIDataStore
     
     init(apiDataStore: APIDataStore) {
@@ -23,9 +23,8 @@ final class UserListUseCaseImpl: UserListUseCase {
 }
 
 extension UserListUseCaseImpl {
-    func fetchData(searchKeyword: String, pageNum: Int) -> Single<SearchResponse> {
+    func fetchData(searchKeyword: String, pageNum: Int) -> Single<Either<SearchResponse,APILimit>> {
         let params = UserListParams(q: searchKeyword, page: pageNum, perPage: AppConst.perPageNum)
-        
         return apiDataStore.request(apiType: APITypes.UserList.get(params: params)).map {
             return SearchResponse.parse($0)
         }
@@ -44,4 +43,8 @@ final class UserListUseCaseProvider {
     static func provide() -> UserListUseCase {
         return UserListUseCaseImpl(apiDataStore: APIDataStoreImpl())
     }
+}
+
+struct APILimit: Decodable {
+    let message: String
 }

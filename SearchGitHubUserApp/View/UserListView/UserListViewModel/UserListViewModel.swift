@@ -56,7 +56,8 @@ final class UserListViewStream: UnioStream<UserListViewStream>, UserListViewStre
 //                }
 //            }).disposed(by: disposeBag)
         
-        Observable.combineLatest(dependency.inputObservable(for: \.pageNum), state.userTotalCount).subscribe(onNext: { (page, userCount) in
+        Observable.combineLatest(dependency.inputObservable(for: \.pageNum), state.userTotalCount)
+            .subscribe(onNext: { (page, userCount) in
                 if page ?? 1 * AppConst.perPageNum <= userCount ?? 0 {
                     state.pageNum.accept(page)
                 }
@@ -76,16 +77,20 @@ extension UserListViewStream {
         
         usecase.fetchData(searchKeyword: key, pageNum: page)
             .subscribe(onSuccess: { (response) in
-            if response.items != nil {
-                state.userListData.accept(response.items!)
-            }
-        
-            state.userTotalCount.accept(response.totalCount)
                 
+                if response.left != nil {
+                    if response.left?.items != nil {
+                        state.userListData.accept((response.left?.items)!)
+                    }
+                    state.userTotalCount.accept(response.left?.totalCount)
+                }
+                
+                if response.right != nil {
+                    state.errorMessage.accept(response.right?.message)
+                }
         }) { error in
             state.errorMessage.accept(error.localizedDescription)
             }
         .disposed(by: disposeBag)
     }
-    
 }

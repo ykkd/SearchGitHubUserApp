@@ -28,11 +28,13 @@ struct SearchResponse: Decodable {
         self.items = items
     }
     
-    static func parse(_ data: Data) -> SearchResponse {
+    static func parse(_ data: Data) -> Either<SearchResponse,APILimit> {
         do {
-            return try JSONDecoder().decode(SearchResponse.self, from: data)
+            let response = try JSONDecoder().decode(SearchResponse.self, from: data)
+            return .left(response)
         } catch {
-            return SearchResponse(count: 0, items: nil)
+//            print(String(data: data, encoding: .utf8))
+            return .right(APILimit(message: "API Limt Over. 1分間あたりのAPI利用制限を超過しました。しばらくお待ちください。"))
         }
     }
 }
