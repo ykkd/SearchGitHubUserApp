@@ -24,7 +24,7 @@ final class UserListUseCaseImpl: UserListUseCase {
 
 extension UserListUseCaseImpl {
     func fetchData(searchKeyword: String, pageNum: Int) -> Single<SearchResponse> {
-        let params = UserListParams(q: searchKeyword, pageNum: pageNum, perPage: AppConst.perPageNum)
+        let params = UserListParams(q: searchKeyword, page: pageNum, perPage: AppConst.perPageNum)
         
         return apiDataStore.request(apiType: APITypes.UserList.get(params: params)).map {
             return SearchResponse.parse($0)
@@ -34,7 +34,7 @@ extension UserListUseCaseImpl {
 
 struct UserListParams: APIRequestParameters {
     let q: String
-    let pageNum: Int
+    let page: Int
     let perPage: Int
 }
 

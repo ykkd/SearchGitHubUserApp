@@ -24,18 +24,21 @@ final class UserListViewStream: UnioStream<UserListViewStream>, UserListViewStre
     
     struct State:StateType {
         let userListData = PublishRelay<[User]>()
-        let userTotalCount = PublishRelay<String?>()
+        let userTotalCount = PublishRelay<Int?>()
         let errorMessage = PublishRelay<String?>()
+        let pageNum = PublishRelay<Int?>()
     }
     
     struct Input: InputType {
         let searchKeyword = PublishRelay<String?>()
+        let pageNum = PublishRelay<Int?>()
     }
     
     struct Output: OutputType {
         let userListData: PublishRelay<[User]>
-        let userTotalCount: PublishRelay<String?>
+        let userTotalCount: PublishRelay<Int?>
         let errorMessage: PublishRelay<String?>
+        let pageNum: PublishRelay<Int?>
     }
     
     struct Extra: ExtraType {
@@ -44,18 +47,27 @@ final class UserListViewStream: UnioStream<UserListViewStream>, UserListViewStre
     
     static func bind(from dependency: Dependency<UserListViewStream.Input, State, UserListViewStream.Extra>, disposeBag: DisposeBag) -> UserListViewStream.Output {
         let usecase = dependency.extra.userListUseCase
-        let state = dependency.state
+        var state = dependency.state
         
-        dependency.inputObservable(for: \.searchKeyword)
-            .subscribe(onNext: { (response) in
-
-            if response != nil {
-                fetchDataForOutput(usecase: dependency.extra.userListUseCase, state: dependency.state, disposeBag: disposeBag, key: response!, page: 1)
-            }
-
+//        dependency.inputObservable(for: \.searchKeyword)
+//            .subscribe(onNext: { (response) in
+//                if response != nil {
+//                    fetchDataForOutput(usecase: dependency.extra.userListUseCase, state: dependency.state, disposeBag: disposeBag, key: response!, page: 1)
+//                }
+//            }).disposed(by: disposeBag)
+        
+        Observable.combineLatest(dependency.inputObservable(for: \.pageNum), state.userTotalCount).subscribe(onNext: { (page, userCount) in
+                if page ?? 1 * AppConst.perPageNum <= userCount ?? 0 {
+                    state.pageNum.accept(page)
+                }
             }).disposed(by: disposeBag)
         
-        return Output(userListData: state.userListData, userTotalCount: state.userTotalCount, errorMessage: state.errorMessage)
+        Observable.combineLatest(dependency.inputObservable(for: \.searchKeyword), dependency.inputObservable(for: \.pageNum)).subscribe(onNext: { (arg0) in
+            let (_, _) = arg0
+            fetchDataForOutput(usecase: dependency.extra.userListUseCase, state: dependency.state, disposeBag: disposeBag, key: arg0.0!, page: arg0.1!)
+            }).disposed(by: disposeBag)
+        
+        return Output(userListData: state.userListData, userTotalCount: state.userTotalCount, errorMessage: state.errorMessage, pageNum: state.pageNum)
     }
 }
 
@@ -68,8 +80,7 @@ extension UserListViewStream {
                 state.userListData.accept(response.items!)
             }
         
-            let totalCountStr = String(response.totalCount)
-            state.userTotalCount.accept(totalCountStr)
+            state.userTotalCount.accept(response.totalCount)
                 
         }) { error in
             state.errorMessage.accept(error.localizedDescription)

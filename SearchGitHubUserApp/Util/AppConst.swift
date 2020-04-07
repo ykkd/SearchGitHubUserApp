@@ -11,5 +11,5 @@ import UIKit
 let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
 
 enum AppConst {
-    static let perPageNum: Int = 30
+    static let perPageNum: Int = 10
 }

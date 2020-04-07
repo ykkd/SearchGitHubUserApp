@@ -16,13 +16,18 @@ class UserListViewController: UIViewController {
 
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var searchButton: UIButton!
     
     private let viewModel: UserListViewStream = UserListViewStream()
     private let disposeBag = DisposeBag()
     
-    let searchBar = UISearchBar(frame: .zero)
-    var data: [User] = []
-    var rowHeight: CGFloat = 136
+    private let searchBar = UISearchBar(frame: .zero)
+    private var data: [User] = []
+    private var maxPageNum: Int = 1
+    private var currentPageNum: Int = 1
+    private var rowHeight: CGFloat = 136
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +48,9 @@ extension UserListViewController {
             .subscribe(onNext: { [weak self] in
                 SVProgressHUD.show()
                 self?.viewModel.input.accept(for: \.searchKeyword).onNext(self?.searchBar.text)
-                self?.searchBar.endEditing(true)
+                self?.viewModel.input.accept(for: \.pageNum).onNext(self?.currentPageNum)
                 
+                self?.searchBar.endEditing(true)
                 SVProgressHUD.dismiss()
             }).disposed(by: disposeBag)
         
@@ -66,19 +72,56 @@ extension UserListViewController {
                 SVProgressHUD.dismiss()
             })
             .disposed(by: disposeBag)
+        
+        rightButton.rx.tap
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                let nextPageNum = 1 + (self?.currentPageNum ?? 1)
+                self?.viewModel.input.accept(for: \.pageNum).onNext(nextPageNum)
+            }).disposed(by: disposeBag)
+        
+        leftButton.rx.tap
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                let nextPageNum = -1 + (self?.currentPageNum ?? 1)
+                self?.viewModel.input.accept(for: \.pageNum).onNext(nextPageNum)
+            }).disposed(by: disposeBag)
     }
     
     private func bindOutput() {
         self.viewModel.output.userListData
             .bind(onNext: { [weak self] outputData in
-               self?.data = outputData
-               self?.tableView.reloadData()
+                
+                SVProgressHUD.show()
+                self?.data = outputData
+                self?.tableView.reloadData()
+                SVProgressHUD.dismiss()
+                
            }).disposed(by: disposeBag)
         
         self.viewModel.output.userTotalCount
-            .bind { totalCountString in
-                let displayText = totalCountString ?? "0"
-                self.infoLabel.text = displayText + " 件"
+            .bind { response in
+                let totalCount = response ?? 0
+                
+                var maxPageNum: Int = (totalCount / AppConst.perPageNum) + 1
+                if totalCount <= AppConst.perPageNum {
+                    maxPageNum = 1
+                }
+                
+                self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + "ページ目 " + String(totalCount) + "件"
+                
+                if maxPageNum == self.currentPageNum {
+                    self.rightButton.isHidden = true
+                } else {
+                    self.rightButton.isHidden = false
+                }
+
+                if self.currentPageNum == 1 {
+                    self.leftButton.isHidden = true
+                } else {
+                    self.leftButton.isHidden = false
+                }
+                
             }.disposed(by: disposeBag)
         
         self.viewModel.output.errorMessage
@@ -88,6 +131,13 @@ extension UserListViewController {
                 me.present(alert, animated: true, completion: nil)
                 self.showEmptyView()
             }).disposed(by: disposeBag)
+        
+        self.viewModel.output.pageNum
+            .bind(onNext: { [weak self] page in
+                guard let page = page else { return }
+                self?.currentPageNum = page
+            }).disposed(by: disposeBag)
+        
     }
     
 }
