@@ -14,7 +14,7 @@ extension UserListViewController {
     
     func setUserListVCConstraintAndDesign() {
         
-        self.infoLabel.textColor = .white
+        self.infoLabel.textColor = .systemPurple
         self.view.backgroundColor = AppConst.baseColor
         
         //infoLabelのconstraint設定
@@ -71,14 +71,13 @@ extension UserListViewController {
     }
 }
 
-
 extension UserListViewController {
     
     func animateLottie(baseView: UIView, animationView:AnimationView, animation:Animation, playSpeed:Float){
         if animationView.isAnimationPlaying == false {
             //bgAnimation
-            animationView.bounds = CGRect(x:0,y:0,width:
-                baseView.bounds.width,height:baseView.bounds.height)
+            animationView.bounds = CGRect(x: 0,y: 0, width:
+                baseView.bounds.width, height: baseView.bounds.height)
             animationView.animation = animation
             animationView.contentMode = .scaleAspectFill
 

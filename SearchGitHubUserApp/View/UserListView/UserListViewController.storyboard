@@ -6,6 +6,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Hermit-Bold.otf">
+            <string>Hermit-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--User List View Controller-->
         <scene sceneID="BRd-3c-Vxb">
@@ -21,7 +26,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gub-D7-3oi">
-                                <rect key="frame" x="127" y="702" width="64" height="64"/>
+                                <rect key="frame" x="127" y="766" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="0tw-Cl-4O6"/>
                                     <constraint firstAttribute="width" constant="64" id="gGU-Ec-Noq"/>
@@ -29,7 +34,7 @@
                                 <state key="normal" image="left"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXs-M8-IKo">
-                                <rect key="frame" x="318" y="702" width="64" height="64"/>
+                                <rect key="frame" x="318" y="766" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="CVw-rq-wfY"/>
                                     <constraint firstAttribute="width" constant="64" id="tVz-zN-bEE"/>
@@ -37,7 +42,7 @@
                                 <state key="normal" image="search"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbH-wY-d2k">
-                                <rect key="frame" x="223" y="702" width="64" height="64"/>
+                                <rect key="frame" x="223" y="766" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="PH4-ST-ycf"/>
                                     <constraint firstAttribute="width" constant="64" id="xmY-2h-I7L"/>
@@ -48,18 +53,18 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Hermit-Bold" family="Hermit" pointSize="16"/>
+                                <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xrX-iz-4Zc" firstAttribute="trailing" secondItem="gXs-M8-IKo" secondAttribute="trailing" constant="32" id="72G-TU-LW2"/>
-                            <constraint firstItem="xrX-iz-4Zc" firstAttribute="bottom" secondItem="Gub-D7-3oi" secondAttribute="bottom" constant="96" id="HoV-TR-IOg"/>
+                            <constraint firstItem="xrX-iz-4Zc" firstAttribute="bottom" secondItem="Gub-D7-3oi" secondAttribute="bottom" constant="32" id="HoV-TR-IOg"/>
                             <constraint firstItem="Gub-D7-3oi" firstAttribute="centerX" secondItem="0ke-c1-A9P" secondAttribute="centerX" constant="-48" id="MGM-Wm-NP1"/>
-                            <constraint firstItem="xrX-iz-4Zc" firstAttribute="bottom" secondItem="gXs-M8-IKo" secondAttribute="bottom" constant="96" id="Uco-aW-aO2"/>
-                            <constraint firstItem="xrX-iz-4Zc" firstAttribute="bottom" secondItem="MbH-wY-d2k" secondAttribute="bottom" constant="96" id="ohB-kL-Kgf"/>
+                            <constraint firstItem="xrX-iz-4Zc" firstAttribute="bottom" secondItem="gXs-M8-IKo" secondAttribute="bottom" constant="32" id="Uco-aW-aO2"/>
+                            <constraint firstItem="xrX-iz-4Zc" firstAttribute="bottom" secondItem="MbH-wY-d2k" secondAttribute="bottom" constant="32" id="ohB-kL-Kgf"/>
                             <constraint firstItem="MbH-wY-d2k" firstAttribute="centerX" secondItem="0ke-c1-A9P" secondAttribute="centerX" constant="48" id="tf1-wK-KL1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xrX-iz-4Zc"/>

@@ -43,6 +43,8 @@
 		C1502216243CA1F100C3F01E /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1502214243CA1F100C3F01E /* UserListViewController.swift */; };
 		C150221B243CA85400C3F01E /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C150221A243CA85400C3F01E /* AppConst.swift */; };
 		C150221C243CA85400C3F01E /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C150221A243CA85400C3F01E /* AppConst.swift */; };
+		C184F643243D59D200F90D88 /* Hermit-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C184F641243D59D200F90D88 /* Hermit-Light.otf */; };
+		C184F644243D59D200F90D88 /* Hermit-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C184F642243D59D200F90D88 /* Hermit-Bold.otf */; };
 		C1D39B4A243D20450080E0E2 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D39B49243D20450080E0E2 /* UserDetailViewController.swift */; };
 		C1D39B4B243D20450080E0E2 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D39B49243D20450080E0E2 /* UserDetailViewController.swift */; };
 		C1D39B4D243D2EB80080E0E2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D39B4C243D2EB80080E0E2 /* UIColorExtension.swift */; };
@@ -100,6 +102,8 @@
 		C1502211243CA1D800C3F01E /* UserListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserListViewController.storyboard; sourceTree = "<group>"; };
 		C1502214243CA1F100C3F01E /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		C150221A243CA85400C3F01E /* AppConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
+		C184F641243D59D200F90D88 /* Hermit-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hermit-Light.otf"; sourceTree = "<group>"; };
+		C184F642243D59D200F90D88 /* Hermit-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hermit-Bold.otf"; sourceTree = "<group>"; };
 		C1D39B49243D20450080E0E2 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		C1D39B4C243D2EB80080E0E2 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		C1D39B51243D32140080E0E2 /* octocat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = octocat.json; sourceTree = "<group>"; };
@@ -314,6 +318,8 @@
 			isa = PBXGroup;
 			children = (
 				C1D39B51243D32140080E0E2 /* octocat.json */,
+				C184F642243D59D200F90D88 /* Hermit-Bold.otf */,
+				C184F641243D59D200F90D88 /* Hermit-Light.otf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -440,9 +446,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C150220F243CA1B400C3F01E /* UserListTableViewCell.xib in Resources */,
+				C184F643243D59D200F90D88 /* Hermit-Light.otf in Resources */,
 				C1D39B52243D32140080E0E2 /* octocat.json in Resources */,
 				C1502207243C9D2600C3F01E /* response.json in Resources */,
 				C1502212243CA1D800C3F01E /* UserListViewController.storyboard in Resources */,
+				C184F644243D59D200F90D88 /* Hermit-Bold.otf in Resources */,
 				C15021BC243C8D6D00C3F01E /* LaunchScreen.storyboard in Resources */,
 				C15021B9243C8D6D00C3F01E /* Assets.xcassets in Resources */,
 			);

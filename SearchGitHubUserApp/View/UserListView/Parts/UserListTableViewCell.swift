@@ -35,8 +35,8 @@ extension UserListTableViewCell {
     func setConstraintAndDesign(rowHeight: CGFloat) {
         
         self.backgroundColor = .clear
-        self.userNameLabel.textColor = .white
-        self.userTypeLabel.textColor = .white
+        self.userNameLabel.textColor = .systemBlue
+        self.userTypeLabel.textColor = .systemPink
         
         //avatarImageViewのconstraint設定
         self.avatarImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -47,15 +47,16 @@ extension UserListTableViewCell {
         
         //avatarImageViewの外観調整
         self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.size.height * 0.1
+        
         //userNameLabelのconstraint設定
         self.userNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.userNameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: rowHeight * -0.1).isActive = true
+        self.userNameLabel.bottomAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         self.userNameLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: rowHeight * 0.1).isActive = true
         self.userNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: rowHeight * -0.1).isActive = true
         
         //userTypeLabelのconstraint設定
         self.userTypeLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.userTypeLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: rowHeight * 0.1).isActive = true
+        self.userTypeLabel.topAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         self.userTypeLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: rowHeight * 0.1).isActive = true
         self.userTypeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: rowHeight * -0.1).isActive = true
     }
