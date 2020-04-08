@@ -5,7 +5,7 @@ GitHubのユーザーを検索し
 
 ## 前提
 - iOS11以上対応
-- 対応機種：iPhone8、iPhoneSE、iPhone8Plus、iPhoneXS, iPhoneXS Max, iPhoneXR, iPad
+- 対応機種：iPhone8、iPhoneSE、iPhone8Plus、iPhoneXS, iPhoneXS Max, iPhoneXR, iPad Air, iPad Pro
 - 言語：swift5.0
 - 画面向き：縦
 
