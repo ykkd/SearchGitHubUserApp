@@ -28,7 +28,7 @@ struct SearchResponse: Decodable {
         self.items = items
     }
     
-    static func parse(_ data: Data) -> Either<SearchResponse,APILimit> {
+    static func parse(_ data: Data) -> Either<SearchResponse, APILimit> {
         do {
             let response = try JSONDecoder().decode(SearchResponse.self, from: data)
             return .left(response)
