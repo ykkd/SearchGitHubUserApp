@@ -44,7 +44,7 @@ GitHubのユーザーを検索し
 ※全てCocoaPodsを介して導入しています。<br>
 
 ## 操作動画
-![SearchGitHubApp](https://user-images.githubusercontent.com/17854586/78731215-0aa86300-797a-11ea-87ee-2b86f4d10c5e.gif)
+![AppGif2](https://user-images.githubusercontent.com/17854586/78734946-814a5e00-7984-11ea-9fcd-03c97fced23f.gif)
 
 ## その他
 課題実装前にSwift5.2にバージョンアップを試みたのですが、
