@@ -53,7 +53,7 @@ class UserListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        animateLottie(baseView: self.baseView, animationView: self.animationView, animation: self.animation!, playSpeed: 1.0)
+        startAnimation()
     }
 }
 
@@ -240,6 +240,12 @@ extension UserListViewController {
         
         setSearchBar()
         setTableView()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(startAnimation), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    @objc private func startAnimation() {
+        animateLottie(baseView: self.baseView, animationView: self.animationView, animation: self.animation!, playSpeed: 1.0)
     }
     
     private func setSearchBar() {
