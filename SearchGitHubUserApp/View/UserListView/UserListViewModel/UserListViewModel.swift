@@ -47,14 +47,7 @@ final class UserListViewStream: UnioStream<UserListViewStream>, UserListViewStre
     
     static func bind(from dependency: Dependency<UserListViewStream.Input, State, UserListViewStream.Extra>, disposeBag: DisposeBag) -> UserListViewStream.Output {
         let usecase = dependency.extra.userListUseCase
-        var state = dependency.state
-        
-//        dependency.inputObservable(for: \.searchKeyword)
-//            .subscribe(onNext: { (response) in
-//                if response != nil {
-//                    fetchDataForOutput(usecase: dependency.extra.userListUseCase, state: dependency.state, disposeBag: disposeBag, key: response!, page: 1)
-//                }
-//            }).disposed(by: disposeBag)
+        let state = dependency.state
         
         Observable.combineLatest(dependency.inputObservable(for: \.pageNum), state.userTotalCount)
             .subscribe(onNext: { (page, userCount) in
@@ -78,17 +71,12 @@ extension UserListViewStream {
         usecase.fetchData(searchKeyword: key, pageNum: page)
             .subscribe(onSuccess: { (response) in
                 
-                if response.left != nil {
-                    if response.left?.items != nil {
-                        state.userListData.accept((response.left?.items)!)
-                    }
-                    
-                    state.userTotalCount.accept(response.left?.totalCount)
-                    
+                if let data = response.left {
+                    state.userListData.accept(data.items ?? [])
+                    state.userTotalCount.accept(data.totalCount)
                 }
-                
-                if response.right != nil {
-                    state.errorMessage.accept(response.right?.message)
+                if let error = response.right {
+                    state.errorMessage.accept(error.message)
                 }
         }) { error in
             state.errorMessage.accept(error.localizedDescription)

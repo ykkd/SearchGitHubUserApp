@@ -45,8 +45,6 @@
 		C150221C243CA85400C3F01E /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C150221A243CA85400C3F01E /* AppConst.swift */; };
 		C184F643243D59D200F90D88 /* Hermit-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C184F641243D59D200F90D88 /* Hermit-Light.otf */; };
 		C184F644243D59D200F90D88 /* Hermit-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C184F642243D59D200F90D88 /* Hermit-Bold.otf */; };
-		C1D39B4A243D20450080E0E2 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D39B49243D20450080E0E2 /* UserDetailViewController.swift */; };
-		C1D39B4B243D20450080E0E2 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D39B49243D20450080E0E2 /* UserDetailViewController.swift */; };
 		C1D39B4D243D2EB80080E0E2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D39B4C243D2EB80080E0E2 /* UIColorExtension.swift */; };
 		C1D39B52243D32140080E0E2 /* octocat.json in Resources */ = {isa = PBXBuildFile; fileRef = C1D39B51243D32140080E0E2 /* octocat.json */; };
 		FDEC861F1C3CB6A9E0AC4EF5 /* Pods_SearchGitHubUserApp_SearchGitHubUserAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBAC67897F5D858E84FB6F9D /* Pods_SearchGitHubUserApp_SearchGitHubUserAppUITests.framework */; };
@@ -104,7 +102,6 @@
 		C150221A243CA85400C3F01E /* AppConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
 		C184F641243D59D200F90D88 /* Hermit-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hermit-Light.otf"; sourceTree = "<group>"; };
 		C184F642243D59D200F90D88 /* Hermit-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hermit-Bold.otf"; sourceTree = "<group>"; };
-		C1D39B49243D20450080E0E2 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		C1D39B4C243D2EB80080E0E2 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		C1D39B51243D32140080E0E2 /* octocat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = octocat.json; sourceTree = "<group>"; };
 		C3EB74E99235975C98567283 /* Pods_SearchGitHubUserApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchGitHubUserApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,7 +251,6 @@
 		C15021EC243C8FA800C3F01E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C1D39B48243D20170080E0E2 /* UserDetailView */,
 				C1502209243CA17100C3F01E /* UserListView */,
 			);
 			path = View;
@@ -304,14 +300,6 @@
 				C14BE9E0243CAE3000F9663C /* UserListViewModel.swift */,
 			);
 			path = UserListViewModel;
-			sourceTree = "<group>";
-		};
-		C1D39B48243D20170080E0E2 /* UserDetailView */ = {
-			isa = PBXGroup;
-			children = (
-				C1D39B49243D20450080E0E2 /* UserDetailViewController.swift */,
-			);
-			path = UserDetailView;
 			sourceTree = "<group>";
 		};
 		C1D39B4E243D31E10080E0E2 /* Resources */ = {
@@ -630,7 +618,6 @@
 				C150221B243CA85400C3F01E /* AppConst.swift in Sources */,
 				C15021FF243C940D00C3F01E /* User.swift in Sources */,
 				C14BE9E1243CAE3000F9663C /* UserListViewModel.swift in Sources */,
-				C1D39B4A243D20450080E0E2 /* UserDetailViewController.swift in Sources */,
 				C15021E7243C8EDB00C3F01E /* R.generated.swift in Sources */,
 				C14BE9E3243CE9DE00F9663C /* KeyBoardHeightObservable.swift in Sources */,
 				C15021F8243C919800C3F01E /* APITypes+UserList.swift in Sources */,
@@ -653,7 +640,6 @@
 				C15021C7243C8D6D00C3F01E /* SearchGitHubUserAppTests.swift in Sources */,
 				C1502200243C940D00C3F01E /* User.swift in Sources */,
 				C150221C243CA85400C3F01E /* AppConst.swift in Sources */,
-				C1D39B4B243D20450080E0E2 /* UserDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

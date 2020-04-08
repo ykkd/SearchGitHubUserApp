@@ -1,0 +1,62 @@
+PODS:
+  - Alamofire (5.0.5)
+  - lottie-ios (3.1.6)
+  - R.swift (5.1.0):
+    - R.swift.Library (~> 5.1.0)
+  - R.swift.Library (5.1.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SDWebImage (5.7.0):
+    - SDWebImage/Core (= 5.7.0)
+  - SDWebImage/Core (5.7.0)
+  - SVProgressHUD (2.2.5)
+  - SwiftLint (0.39.2)
+  - Unio (0.9.0):
+    - RxRelay (~> 5.0)
+    - RxSwift (~> 5.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0.5)
+  - lottie-ios
+  - R.swift (~> 5.1.0)
+  - RxCocoa (~> 5)
+  - RxSwift (~> 5)
+  - SDWebImage
+  - SVProgressHUD (~> 2.2.5)
+  - SwiftLint
+  - Unio (~> 0.9.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - lottie-ios
+    - R.swift
+    - R.swift.Library
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SDWebImage
+    - SVProgressHUD
+    - SwiftLint
+    - Unio
+
+SPEC CHECKSUMS:
+  Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
+  lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
+  R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
+  R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SDWebImage: a99471f452bdfa0ca52ddf5b1adf2b61cab1d1eb
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
+  Unio: 7d7e05882bc2211eb756beca40b1498212b8bf43
+
+PODFILE CHECKSUM: 6e31578ab1df5b5ec9b84994e58ced3ca0d563ce
+
+COCOAPODS: 1.9.1

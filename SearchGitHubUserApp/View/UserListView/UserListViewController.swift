@@ -83,7 +83,7 @@ extension UserListViewController {
             .subscribe(onNext: { [weak self] in
                 SVProgressHUD.show()
                 let nextPageNum = 1 + (self?.currentPageNum ?? 1)
-                self?.viewModel.input.accept(for: \.pageNum).onNext(nextPageNum)
+                self?.viewModel.input.accept(nextPageNum, for: \.pageNum)
                 self?.scrollToTop()
             }).disposed(by: disposeBag)
         
@@ -92,7 +92,7 @@ extension UserListViewController {
             .subscribe(onNext: { [weak self] in
                 SVProgressHUD.show()
                 let nextPageNum = -1 + (self?.currentPageNum ?? 1)
-                self?.viewModel.input.accept(for: \.pageNum).onNext(nextPageNum)
+                self?.viewModel.input.accept(nextPageNum, for: \.pageNum)
                 self?.scrollToTop()
             }).disposed(by: disposeBag)
 
@@ -115,9 +115,6 @@ extension UserListViewController {
         keyboardHeight()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] (keyboardHeight) in
-                // adjust other views with keyboardHeight
-                print(keyboardHeight)
-                
                 if keyboardHeight != 0 {
                     self?.leftButtonBottomConstraint.constant = keyboardHeight + AppConst.keyboardMargin
                     self?.rightButtonBottomConstraint.constant = keyboardHeight + AppConst.keyboardMargin
@@ -127,7 +124,6 @@ extension UserListViewController {
                     self?.rightButtonBottomConstraint.constant = AppConst.defaultMargin
                     self?.searchButtonBottomConstraint.constant = AppConst.defaultMargin
                 }
-
             })
             .disposed(by: disposeBag)
     }
@@ -140,15 +136,14 @@ extension UserListViewController {
                 
                 SVProgressHUD.show()
                 
-                self?.viewModel.input.accept(for: \.searchKeyword).onNext(self?.searchBar.text)
-                self?.viewModel.input.accept(for: \.pageNum).onNext(self?.currentPageNum)
+                self?.viewModel.input.accept(self?.searchBar.text, for: \.searchKeyword)
+                self?.viewModel.input.accept(self?.currentPageNum, for: \.pageNum)
                 
                 self?.searchBar.resignFirstResponder()
                 self?.searchBar.setShowsCancelButton(false, animated: true)
                 
                 self?.searchButton.imageView?.image = R.image.search()
                 
-//                SVProgressHUD.dismiss()
             }).disposed(by: disposeBag)
         
         searchBar.rx.textDidBeginEditing
@@ -179,35 +174,10 @@ extension UserListViewController {
            }).disposed(by: disposeBag)
         
         self.viewModel.output.userTotalCount
-            .bind { response in
+            .bind { [weak self] response in
                 let totalCount = response ?? 0
                 
-                var maxPageNum: Int = (totalCount / AppConst.perPageNum) + 1
-                if totalCount <= AppConst.perPageNum {
-                    maxPageNum = 1
-                }
-                
-                if totalCount == 0 {
-                    self.infoLabel.text = "検索結果は0件です"
-                    self.leftButton.isHidden = true
-                    self.rightButton.isHidden = true
-                } else {
-                    self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + "ページ目"
-                    self.leftButton.isHidden = false
-                    self.rightButton.isHidden = false
-                }
-                
-                if maxPageNum == self.currentPageNum {
-                    self.rightButton.isHidden = true
-                } else {
-                    self.rightButton.isHidden = false
-                }
-
-                if self.currentPageNum == 1 {
-                    self.leftButton.isHidden = true
-                } else {
-                    self.leftButton.isHidden = false
-                }
+                self?.updateInfoLabelAndPagingButtons(totalCount: totalCount)
                 
             }.disposed(by: disposeBag)
         
@@ -216,9 +186,8 @@ extension UserListViewController {
                 
                 SVProgressHUD.dismiss()
                 
-                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-                me.present(alert, animated: true, completion: nil)
+                self.showAlert(message: message, me: me)
+                
                 self.showEmptyView()
             }).disposed(by: disposeBag)
         
@@ -297,5 +266,45 @@ extension UserListViewController: UITableViewDataSource, UITableViewDelegate {
     private func scrollToTop() {
         let topCellIndexPath: IndexPath = IndexPath(row: 0, section: 0)
         tableView.scrollToRow(at: topCellIndexPath, at: .top, animated: false)
+    }
+}
+
+extension UserListViewController {
+    private func showAlert(message: String?, me: UserListViewController) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+        me.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension UserListViewController {
+    
+    private func updateInfoLabelAndPagingButtons(totalCount: Int) {
+        var maxPageNum: Int = (totalCount / AppConst.perPageNum) + 1
+        if totalCount <= AppConst.perPageNum {
+            maxPageNum = 1
+        }
+        
+        if totalCount == 0 {
+            self.infoLabel.text = "検索結果は0件です"
+            self.leftButton.isHidden = true
+            self.rightButton.isHidden = true
+        } else {
+            self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + "ページ目"
+            self.leftButton.isHidden = false
+            self.rightButton.isHidden = false
+        }
+        
+        if maxPageNum == self.currentPageNum {
+            self.rightButton.isHidden = true
+        } else {
+            self.rightButton.isHidden = false
+        }
+
+        if self.currentPageNum == 1 {
+            self.leftButton.isHidden = true
+        } else {
+            self.leftButton.isHidden = false
+        }
     }
 }
