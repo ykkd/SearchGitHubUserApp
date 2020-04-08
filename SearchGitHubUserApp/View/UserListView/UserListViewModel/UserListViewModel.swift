@@ -22,7 +22,7 @@ final class UserListViewStream: UnioStream<UserListViewStream>, UserListViewStre
         self.init(input: Input(), state: State(), extra: Extra(userListUseCase: UserListUseCaseProvider.provide()))
     }
     
-    struct State:StateType {
+    struct State: StateType {
         let userListData = PublishRelay<[User]>()
         let userTotalCount = PublishRelay<Int?>()
         let errorMessage = PublishRelay<String?>()

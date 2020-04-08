@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol UserListUseCase {
-    func fetchData(searchKeyword: String, pageNum: Int) -> Single<Either<SearchResponse,APILimit>>
+    func fetchData(searchKeyword: String, pageNum: Int) -> Single<Either<SearchResponse, APILimit>>
 }
 
 final class UserListUseCaseImpl: UserListUseCase {
@@ -23,7 +23,7 @@ final class UserListUseCaseImpl: UserListUseCase {
 }
 
 extension UserListUseCaseImpl {
-    func fetchData(searchKeyword: String, pageNum: Int) -> Single<Either<SearchResponse,APILimit>> {
+    func fetchData(searchKeyword: String, pageNum: Int) -> Single<Either<SearchResponse, APILimit>> {
         let params = UserListParams(q: searchKeyword, page: pageNum, perPage: AppConst.perPageNum)
         return apiDataStore.request(apiType: APITypes.UserList.get(params: params)).map {
             return SearchResponse.parse($0)
