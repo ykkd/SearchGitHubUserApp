@@ -73,10 +73,10 @@ extension UserListViewController {
 
 extension UserListViewController {
     
-    func animateLottie(baseView: UIView, animationView:AnimationView, animation:Animation, playSpeed:Float){
+    func animateLottie(baseView: UIView, animationView: AnimationView, animation: Animation, playSpeed: Float){
         if animationView.isAnimationPlaying == false {
             //bgAnimation
-            animationView.bounds = CGRect(x: 0,y: 0, width:
+            animationView.bounds = CGRect(x: 0, y: 0, width:
                 baseView.bounds.width, height: baseView.bounds.height)
             animationView.animation = animation
             animationView.contentMode = .scaleAspectFill

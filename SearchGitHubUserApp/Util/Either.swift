@@ -6,11 +6,11 @@
 //  Copyright © 2020 Yuki Kanda. All rights reserved.
 //
 
-enum Either<Left, Right>{
+enum Either<Left, Right> {
     case left(Left)
     case right(Right)
     
-    var left:Left? {
+    var left: Left? {
         switch self {
         case let .left(x):
             return x
@@ -20,7 +20,7 @@ enum Either<Left, Right>{
         }
     }
     
-    var right:Right? {
+    var right: Right? {
         switch self {
         case .left:
             return nil

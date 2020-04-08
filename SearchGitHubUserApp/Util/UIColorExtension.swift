@@ -21,4 +21,3 @@ extension UIColor {
         self.init(hex: hex, alpha: 1.0)
     }
 }
-
