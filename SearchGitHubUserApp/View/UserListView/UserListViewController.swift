@@ -289,22 +289,24 @@ extension UserListViewController {
             self.infoLabel.text = "検索結果は0件です"
             self.leftButton.isHidden = true
             self.rightButton.isHidden = true
-        } else {
-            self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + "ページ目"
-            self.leftButton.isHidden = false
-            self.rightButton.isHidden = false
-        }
-        
-        if maxPageNum == self.currentPageNum {
-            self.rightButton.isHidden = true
-        } else {
-            self.rightButton.isHidden = false
-        }
-
-        if self.currentPageNum == 1 {
-            self.leftButton.isHidden = true
-        } else {
-            self.leftButton.isHidden = false
+        } else if totalCount != 0 {
+            if self.currentPageNum == 1 && maxPageNum == 1 {
+                self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + "ページ目"
+                self.leftButton.isHidden = true
+                self.rightButton.isHidden = true
+            } else if self.currentPageNum == 1 && maxPageNum > 1 {
+                self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + "ページ目"
+                self.leftButton.isHidden = true
+                self.rightButton.isHidden = false
+            } else if self.currentPageNum > 1 && self.currentPageNum < maxPageNum {
+                self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + "ページ目"
+                self.leftButton.isHidden = false
+                self.rightButton.isHidden = false
+            } else if self.currentPageNum > 1 && self.currentPageNum == maxPageNum {
+                self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + "ページ目"
+                self.leftButton.isHidden = false
+                self.rightButton.isHidden = true
+            }
         }
     }
 }
