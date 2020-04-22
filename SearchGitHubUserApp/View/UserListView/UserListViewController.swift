@@ -65,6 +65,7 @@ extension UserListViewController {
     
     private func bindInput() {
         bindInputForSearchBar()
+        bindInputForKeyboard()
         
         tableView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
@@ -111,7 +112,9 @@ extension UserListViewController {
                 }
                 
             }).disposed(by: disposeBag)
-        
+    }
+    
+    private func bindInputForKeyboard() {
         keyboardHeight()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] (keyboardHeight) in
@@ -213,7 +216,8 @@ extension UserListViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(startAnimation), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
-    @objc private func startAnimation() {
+    @objc
+    private func startAnimation() {
         animateLottie(baseView: self.baseView, animationView: self.animationView, animation: self.animation!, playSpeed: 1.0)
     }
     

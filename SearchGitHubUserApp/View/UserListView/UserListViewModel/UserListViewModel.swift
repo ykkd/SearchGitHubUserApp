@@ -58,7 +58,7 @@ final class UserListViewStream: UnioStream<UserListViewStream>, UserListViewStre
         
         Observable.combineLatest(dependency.inputObservable(for: \.searchKeyword), dependency.inputObservable(for: \.pageNum)).subscribe(onNext: { (arg0) in
             let (_, _) = arg0
-            fetchDataForOutput(usecase: dependency.extra.userListUseCase, state: dependency.state, disposeBag: disposeBag, key: arg0.0!, page: arg0.1!)
+            fetchDataForOutput(usecase: usecase, state: state, disposeBag: disposeBag, key: arg0.0!, page: arg0.1!)
             }).disposed(by: disposeBag)
         
         return Output(userListData: state.userListData, userTotalCount: state.userTotalCount, errorMessage: state.errorMessage, pageNum: state.pageNum)
@@ -78,9 +78,8 @@ extension UserListViewStream {
                 if let error = response.right {
                     state.errorMessage.accept(error.message)
                 }
-        }) { error in
-            state.errorMessage.accept(error.localizedDescription)
-            }
-        .disposed(by: disposeBag)
+            }, onError: { (error) in
+                state.errorMessage.accept(error.localizedDescription)
+            }).disposed(by: disposeBag)
     }
 }
