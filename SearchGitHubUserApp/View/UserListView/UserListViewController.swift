@@ -15,15 +15,15 @@ import Lottie
 
 class UserListViewController: UIViewController {
 
-    @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var leftButton: UIButton!
-    @IBOutlet weak var rightButton: UIButton!
-    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet private weak var infoLabel: UILabel!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var leftButton: UIButton!
+    @IBOutlet private weak var rightButton: UIButton!
+    @IBOutlet private weak var searchButton: UIButton!
     
-    @IBOutlet weak var leftButtonBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var rightButtonBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var searchButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var leftButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var rightButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var searchButtonBottomConstraint: NSLayoutConstraint!
     
     private let viewModel: UserListViewStream = UserListViewStream()
     private let disposeBag = DisposeBag()
@@ -44,7 +44,7 @@ class UserListViewController: UIViewController {
         
         SVProgressHUD.show()
         
-        setUserListVCConstraintAndDesign()
+        setUserListVCConstraintAndDesign(infoLabel: self.infoLabel, tableView: self.tableView)
         setInitialState()
         self.bind()
         

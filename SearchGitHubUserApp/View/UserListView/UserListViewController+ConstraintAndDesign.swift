@@ -12,33 +12,33 @@ import Lottie
 
 extension UserListViewController {
     
-    func setUserListVCConstraintAndDesign() {
+    func setUserListVCConstraintAndDesign(infoLabel: UILabel, tableView: UITableView) {
         
-        self.infoLabel.textColor = .systemPurple
+        infoLabel.textColor = .systemPurple
         self.view.backgroundColor = AppConst.baseColor
         
         //infoLabelのconstraint設定
-        self.infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.infoLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        self.infoLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        self.infoLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        self.infoLabel.heightAnchor.constraint(equalToConstant: screenSize.height / 16).isActive = true
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        infoLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        infoLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        infoLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        infoLabel.heightAnchor.constraint(equalToConstant: screenSize.height / 16).isActive = true
         
-        self.infoLabel.numberOfLines = 1
-        self.infoLabel.adjustsFontSizeToFitWidth = true
-        self.infoLabel.baselineAdjustment = .alignCenters
-        self.infoLabel.minimumScaleFactor = 0.3
-        self.infoLabel.backgroundColor = .clear
+        infoLabel.numberOfLines = 1
+        infoLabel.adjustsFontSizeToFitWidth = true
+        infoLabel.baselineAdjustment = .alignCenters
+        infoLabel.minimumScaleFactor = 0.3
+        infoLabel.backgroundColor = .clear
         
         //tableViewのconstraint設定
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        self.tableView.topAnchor.constraint(equalTo: self.infoLabel.bottomAnchor).isActive = true
-        self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: infoLabel.bottomAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
         //animation
-        self.view.addSubview(self.baseView)
+        view.addSubview(self.baseView)
         self.baseView.backgroundColor = .clear
         self.view.bringSubviewToFront(self.baseView)
         
