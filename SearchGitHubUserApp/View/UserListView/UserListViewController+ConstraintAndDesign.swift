@@ -12,7 +12,7 @@ import Lottie
 
 extension UserListViewController {
     
-    func setUserListVCConstraintAndDesign(infoLabel: UILabel, tableView: UITableView) {
+    func setUserListVCConstraintAndDesign(infoLabel: UILabel, tableView: UITableView, baseView: UIView) {
         
         infoLabel.textColor = .systemPurple
         self.view.backgroundColor = AppConst.baseColor
@@ -38,15 +38,15 @@ extension UserListViewController {
         tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
         //animation
-        view.addSubview(self.baseView)
-        self.baseView.backgroundColor = .clear
-        self.view.bringSubviewToFront(self.baseView)
+        view.addSubview(baseView)
+        baseView.backgroundColor = .clear
+        view.bringSubviewToFront(baseView)
         
-        self.baseView.translatesAutoresizingMaskIntoConstraints = false
-        self.baseView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        self.baseView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.baseView.widthAnchor.constraint(equalToConstant: screenSize.width * 0.6).isActive = true
-        self.baseView.heightAnchor.constraint(equalToConstant: screenSize.width * 0.6).isActive = true
+        baseView.translatesAutoresizingMaskIntoConstraints = false
+        baseView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        baseView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        baseView.widthAnchor.constraint(equalToConstant: screenSize.width * 0.6).isActive = true
+        baseView.heightAnchor.constraint(equalToConstant: screenSize.width * 0.6).isActive = true
     }
 }
 

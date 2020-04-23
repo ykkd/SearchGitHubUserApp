@@ -35,16 +35,16 @@ class UserListViewController: UIViewController {
     private var rowHeight: CGFloat = 136
     
     //lottieAnimation
-    var baseView = UIView()
-    let animationView = AnimationView()
-    let animation = Animation.named(AppConst.octocatAnim)
+    private var baseView = UIView()
+    private let animationView = AnimationView()
+    private let animation = Animation.named(AppConst.octocatAnim)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         SVProgressHUD.show()
         
-        setUserListVCConstraintAndDesign(infoLabel: self.infoLabel, tableView: self.tableView)
+        setUserListVCConstraintAndDesign(infoLabel: self.infoLabel, tableView: self.tableView, baseView: self.baseView)
         setInitialState()
         self.bind()
         
