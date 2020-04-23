@@ -44,8 +44,8 @@ class UserListViewController: UIViewController {
         
         SVProgressHUD.show()
         
-        setUserListVCConstraintAndDesign(infoLabel: self.infoLabel, tableView: self.tableView, baseView: self.baseView)
-        setInitialState()
+        self.setUserListVCConstraintAndDesign(infoLabel: self.infoLabel, tableView: self.tableView, baseView: self.baseView)
+        self.setInitialState()
         self.bind()
         
         SVProgressHUD.dismiss()
@@ -53,7 +53,7 @@ class UserListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        startAnimation()
+        self.startAnimation()
     }
 }
 
@@ -64,10 +64,10 @@ extension UserListViewController {
     }
     
     private func bindInput() {
-        bindInputForSearchBar()
-        bindInputForKeyboard()
+        self.bindInputForSearchBar()
+        self.bindInputForKeyboard()
         
-        tableView.rx.itemSelected
+        self.tableView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
                 SVProgressHUD.show()
                 let cell = self?.tableView.cellForRow(at: indexPath) as! UserListTableViewCell
@@ -79,7 +79,7 @@ extension UserListViewController {
             })
             .disposed(by: disposeBag)
         
-        rightButton.rx.tap
+        self.rightButton.rx.tap
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 SVProgressHUD.show()
@@ -88,7 +88,7 @@ extension UserListViewController {
                 self?.scrollToTop()
             }).disposed(by: disposeBag)
         
-        leftButton.rx.tap
+        self.leftButton.rx.tap
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 SVProgressHUD.show()
@@ -97,7 +97,7 @@ extension UserListViewController {
                 self?.scrollToTop()
             }).disposed(by: disposeBag)
 
-        searchButton.rx.tap
+        self.searchButton.rx.tap
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 if self?.searchBar.showsCancelButton == true {
@@ -115,7 +115,7 @@ extension UserListViewController {
     }
     
     private func bindInputForKeyboard() {
-        keyboardHeight()
+        KeyBoardHeightObservable.keyboardHeight()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] (keyboardHeight) in
                 if keyboardHeight != 0 {
@@ -132,7 +132,7 @@ extension UserListViewController {
     }
     
     private func bindInputForSearchBar() {
-        searchBar.rx.searchButtonClicked
+        self.searchBar.rx.searchButtonClicked
             .subscribe(onNext: { [weak self] in
                 
                 self?.baseView.isHidden = true
@@ -149,13 +149,13 @@ extension UserListViewController {
                 
             }).disposed(by: disposeBag)
         
-        searchBar.rx.textDidBeginEditing
+        self.searchBar.rx.textDidBeginEditing
             .subscribe(onNext: { [weak self] in
                 self?.searchBar.setShowsCancelButton(true, animated: true)
                 self?.searchButton.imageView?.image = R.image.cancel()
             }).disposed(by: disposeBag)
         
-        searchBar.rx.cancelButtonClicked
+        self.searchBar.rx.cancelButtonClicked
             .subscribe(onNext: { [weak self] in
                 self?.searchBar.resignFirstResponder()
                 self?.searchBar.setShowsCancelButton(false, animated: true)
@@ -207,23 +207,23 @@ extension UserListViewController {
     
     private func setInitialState() {
         
-        rightButton.isHidden = true
-        leftButton.isHidden = true
+        self.rightButton.isHidden = true
+        self.leftButton.isHidden = true
         
-        setSearchBar()
-        setTableView()
+        self.setSearchBar()
+        self.setTableView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(startAnimation), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     @objc
     private func startAnimation() {
-        animateLottie(baseView: self.baseView, animationView: self.animationView, animation: self.animation!, playSpeed: 1.0)
+        self.animateLottie(baseView: self.baseView, animationView: self.animationView, animation: self.animation!, playSpeed: 1.0)
     }
     
     private func setSearchBar() {
-        navigationItem.titleView = searchBar
-        searchBar.placeholder = "検索してみてください"
+        self.navigationItem.titleView = searchBar
+        self.searchBar.placeholder = "検索してみてください"
     }
     
     private func showEmptyView() {
@@ -231,13 +231,13 @@ extension UserListViewController {
     }
     
     private func setTableView() {
-        tableView.register(UINib(nibName: "UserListTableViewCell", bundle: nil), forCellReuseIdentifier: "UserListTableViewCell")
+        self.tableView.register(UINib(nibName: "UserListTableViewCell", bundle: nil), forCellReuseIdentifier: "UserListTableViewCell")
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.separatorStyle = .none
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.separatorStyle = .none
         
-        rowHeight = screenSize.height / 8
+        self.rowHeight = screenSize.height / 8
         
     }
 }
@@ -269,7 +269,7 @@ extension UserListViewController: UITableViewDataSource, UITableViewDelegate {
     
     private func scrollToTop() {
         let topCellIndexPath: IndexPath = IndexPath(row: 0, section: 0)
-        tableView.scrollToRow(at: topCellIndexPath, at: .top, animated: false)
+        self.tableView.scrollToRow(at: topCellIndexPath, at: .top, animated: false)
     }
 }
 
