@@ -218,7 +218,7 @@ extension UserListViewController {
     
     @objc
     private func startAnimation() {
-        self.animateLottie(baseView: self.baseView, animationView: self.animationView, animation: self.animation!, playSpeed: 1.0)
+        self.animateLottie(baseView: self.baseView, animationView: self.animationView, animation: self.animation, playSpeed: 1.0)
     }
     
     private func setSearchBar() {

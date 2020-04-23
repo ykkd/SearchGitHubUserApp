@@ -25,7 +25,7 @@ extension UserListTableViewCell {
         self.userNameLabel.text = data.loginID
         self.userTypeLabel.text = data.userType
         if data.avatarUrl != nil {
-            self.avatarImageView.sd_setImage(with: URL(string: data.avatarUrl!), placeholderImage: R.image.placeholder())
+            self.avatarImageView.sd_setImage(with: URL(string: data.avatarUrl ?? ""), placeholderImage: R.image.placeholder())
         }
         self.userUrl = data.url
     }

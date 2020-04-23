@@ -30,8 +30,10 @@ class SearchGitHubUserAppTests: XCTestCase {
     private func createDataObject() -> Data? {
         
         let testBundle = Bundle(for: type(of: self))
-        let path = testBundle.url(forResource: "response", withExtension: "json")
-        let data = try! Data(contentsOf: path!, options: .uncached)
-        return data
+        let path: URL? = testBundle.url(forResource: "response", withExtension: "json")
+        if let unwrappedPath = path {
+            let data = try? Data(contentsOf: unwrappedPath, options: .uncached)
+            return data
+        }
     }
 }

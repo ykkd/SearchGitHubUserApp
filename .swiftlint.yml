@@ -24,7 +24,7 @@ opt_in_rules:
 #- file_header
 - first_where
 # 場合によっては特に問題ないので
-#- force_unwrapping
+- force_unwrapping
 - implicitly_unwrapped_optional # new
 - missing_docs
 - nimble_operator
@@ -33,7 +33,7 @@ opt_in_rules:
 - operator_usage_whitespace
 - overridden_super_call
 # 基本的にはprivateにしたほうが良いがアプリ規模が小さいので今回は無効
-#- private_outlet
+- private_outlet
 - prohibited_super_call
 - redundant_nil_coalescing
 # そこまで多くならないので整列していなくても問題ない
