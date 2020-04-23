@@ -1,0 +1,12 @@
+/* 
+  Localizables.strings
+  SearchGitHubUserApp
+
+  Created by Yuki Kanda on 2020/04/23.
+  Copyright © 2020 Yuki Kanda. All rights reserved.
+*/
+"Search from here" = "Search from here";
+"0 Search Results" = "0 Search Results";
+"page" = "page";
+"Error" = "Error";
+"Close" = "Close";

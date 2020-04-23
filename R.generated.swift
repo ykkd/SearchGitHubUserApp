@@ -266,6 +266,137 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
+  /// This `R.string` struct is generated, and contains static references to 2 localization tables.
+  struct string {
+    /// This `R.string.launchScreen` struct is generated, and contains static references to 1 localization keys.
+    struct launchScreen {
+      /// ja translation: Find Users
+      ///
+      /// Locales: ja
+      static let r6VDKL5YText = Rswift.StringResource(key: "R6V-dK-l5Y.text", tableName: "LaunchScreen", bundle: R.hostingBundle, locales: ["ja"], comment: nil)
+
+      /// ja translation: Find Users
+      ///
+      /// Locales: ja
+      static func r6VDKL5YText(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("R6V-dK-l5Y.text", tableName: "LaunchScreen", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LaunchScreen", preferredLanguages: preferredLanguages) else {
+          return "R6V-dK-l5Y.text"
+        }
+
+        return NSLocalizedString("R6V-dK-l5Y.text", tableName: "LaunchScreen", bundle: bundle, comment: "")
+      }
+
+      fileprivate init() {}
+    }
+
+    /// This `R.string.localizables` struct is generated, and contains static references to 5 localization keys.
+    struct localizables {
+      /// en translation: 0 Search Results
+      ///
+      /// Locales: en, ja
+      static let searchResults = Rswift.StringResource(key: "0 Search Results", tableName: "Localizables", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: Close
+      ///
+      /// Locales: en, ja
+      static let close = Rswift.StringResource(key: "Close", tableName: "Localizables", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: Error
+      ///
+      /// Locales: en, ja
+      static let error = Rswift.StringResource(key: "Error", tableName: "Localizables", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: Search from here
+      ///
+      /// Locales: en, ja
+      static let searchFromHere = Rswift.StringResource(key: "Search from here", tableName: "Localizables", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: page
+      ///
+      /// Locales: en, ja
+      static let page = Rswift.StringResource(key: "page", tableName: "Localizables", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+
+      /// en translation: 0 Search Results
+      ///
+      /// Locales: en, ja
+      static func searchResults(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("0 Search Results", tableName: "Localizables", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizables", preferredLanguages: preferredLanguages) else {
+          return "0 Search Results"
+        }
+
+        return NSLocalizedString("0 Search Results", tableName: "Localizables", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Close
+      ///
+      /// Locales: en, ja
+      static func close(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Close", tableName: "Localizables", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizables", preferredLanguages: preferredLanguages) else {
+          return "Close"
+        }
+
+        return NSLocalizedString("Close", tableName: "Localizables", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Error
+      ///
+      /// Locales: en, ja
+      static func error(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Error", tableName: "Localizables", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizables", preferredLanguages: preferredLanguages) else {
+          return "Error"
+        }
+
+        return NSLocalizedString("Error", tableName: "Localizables", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Search from here
+      ///
+      /// Locales: en, ja
+      static func searchFromHere(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Search from here", tableName: "Localizables", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizables", preferredLanguages: preferredLanguages) else {
+          return "Search from here"
+        }
+
+        return NSLocalizedString("Search from here", tableName: "Localizables", bundle: bundle, comment: "")
+      }
+
+      /// en translation: page
+      ///
+      /// Locales: en, ja
+      static func page(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("page", tableName: "Localizables", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizables", preferredLanguages: preferredLanguages) else {
+          return "page"
+        }
+
+        return NSLocalizedString("page", tableName: "Localizables", bundle: bundle, comment: "")
+      }
+
+      fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+
   fileprivate struct intern: Rswift.Validatable {
     fileprivate static func validate() throws {
       try _R.validate()

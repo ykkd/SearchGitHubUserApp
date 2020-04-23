@@ -47,6 +47,7 @@
 		C184F644243D59D200F90D88 /* Hermit-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C184F642243D59D200F90D88 /* Hermit-Bold.otf */; };
 		C1D39B4D243D2EB80080E0E2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D39B4C243D2EB80080E0E2 /* UIColorExtension.swift */; };
 		C1D39B52243D32140080E0E2 /* octocat.json in Resources */ = {isa = PBXBuildFile; fileRef = C1D39B51243D32140080E0E2 /* octocat.json */; };
+		C1E91F2E2451D40E00CF29B3 /* Localizables.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1E91F302451D40E00CF29B3 /* Localizables.strings */; };
 		FDEC861F1C3CB6A9E0AC4EF5 /* Pods_SearchGitHubUserApp_SearchGitHubUserAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBAC67897F5D858E84FB6F9D /* Pods_SearchGitHubUserApp_SearchGitHubUserAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,9 @@
 		C184F642243D59D200F90D88 /* Hermit-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hermit-Bold.otf"; sourceTree = "<group>"; };
 		C1D39B4C243D2EB80080E0E2 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		C1D39B51243D32140080E0E2 /* octocat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = octocat.json; sourceTree = "<group>"; };
+		C1E91F2F2451D40E00CF29B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizables.strings; sourceTree = "<group>"; };
+		C1E91F312451D4CF00CF29B3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		C1E91F322451D4D200CF29B3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizables.strings; sourceTree = "<group>"; };
 		C3EB74E99235975C98567283 /* Pods_SearchGitHubUserApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchGitHubUserApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBAC67897F5D858E84FB6F9D /* Pods_SearchGitHubUserApp_SearchGitHubUserAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchGitHubUserApp_SearchGitHubUserAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3804E29F0A6F98B25520040 /* Pods_SearchGitHubUserAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchGitHubUserAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -308,6 +312,7 @@
 				C1D39B51243D32140080E0E2 /* octocat.json */,
 				C184F642243D59D200F90D88 /* Hermit-Bold.otf */,
 				C184F641243D59D200F90D88 /* Hermit-Light.otf */,
+				C1E91F302451D40E00CF29B3 /* Localizables.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -415,6 +420,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = C15021A3243C8D6C00C3F01E;
 			productRefGroup = C15021AD243C8D6C00C3F01E /* Products */;
@@ -436,6 +442,7 @@
 				C150220F243CA1B400C3F01E /* UserListTableViewCell.xib in Resources */,
 				C184F643243D59D200F90D88 /* Hermit-Light.otf in Resources */,
 				C1D39B52243D32140080E0E2 /* octocat.json in Resources */,
+				C1E91F2E2451D40E00CF29B3 /* Localizables.strings in Resources */,
 				C1502207243C9D2600C3F01E /* response.json in Resources */,
 				C1502212243CA1D800C3F01E /* UserListViewController.storyboard in Resources */,
 				C184F644243D59D200F90D88 /* Hermit-Bold.otf in Resources */,
@@ -671,8 +678,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				C15021BB243C8D6D00C3F01E /* Base */,
+				C1E91F312451D4CF00CF29B3 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C1E91F302451D40E00CF29B3 /* Localizables.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C1E91F2F2451D40E00CF29B3 /* en */,
+				C1E91F322451D4D200CF29B3 /* ja */,
+			);
+			name = Localizables.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -682,6 +699,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -743,6 +761,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

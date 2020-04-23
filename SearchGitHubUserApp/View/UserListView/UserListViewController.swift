@@ -223,7 +223,7 @@ extension UserListViewController {
     
     private func setSearchBar() {
         self.navigationItem.titleView = searchBar
-        self.searchBar.placeholder = "検索してみてください"
+        self.searchBar.placeholder = R.string.localizables.searchFromHere()
     }
     
     private func showEmptyView() {
@@ -275,8 +275,8 @@ extension UserListViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension UserListViewController {
     private func showAlert(message: String?, me: UserListViewController) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+        let alert = UIAlertController(title: R.string.localizables.error(), message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: R.string.localizables.close(), style: .default, handler: nil))
         me.present(alert, animated: true, completion: nil)
     }
 }
@@ -290,24 +290,24 @@ extension UserListViewController {
         }
         
         if totalCount == 0 {
-            self.infoLabel.text = "検索結果は0件です"
+            self.infoLabel.text = R.string.localizables.searchResults()
             self.leftButton.isHidden = true
             self.rightButton.isHidden = true
         } else if totalCount != 0 {
             if self.currentPageNum == 1 && maxPageNum == 1 {
-                self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + "ページ目"
+                self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + R.string.localizables.page()
                 self.leftButton.isHidden = true
                 self.rightButton.isHidden = true
             } else if self.currentPageNum == 1 && maxPageNum > 1 {
-                self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + "ページ目"
+                self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + R.string.localizables.page()
                 self.leftButton.isHidden = true
                 self.rightButton.isHidden = false
             } else if self.currentPageNum > 1 && self.currentPageNum < maxPageNum {
-                self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + "ページ目"
+                self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + R.string.localizables.page()
                 self.leftButton.isHidden = false
                 self.rightButton.isHidden = false
             } else if self.currentPageNum > 1 && self.currentPageNum == maxPageNum {
-                self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + "ページ目"
+                self.infoLabel.text = String(self.currentPageNum) + " / " + String(maxPageNum) + R.string.localizables.page()
                 self.leftButton.isHidden = false
                 self.rightButton.isHidden = true
             }
